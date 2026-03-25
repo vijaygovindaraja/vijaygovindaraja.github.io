@@ -3,131 +3,151 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vijay Govindarajan — Researcher & Technologist</title>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+  <title>Vijay Govindarajan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --text: #2c2c2c;
-      --text-light: #555;
+      --sidebar-w: 260px;
+      --text: #2d2d2d;
+      --text-mid: #555;
+      --text-light: #777;
       --accent: #1a5276;
-      --accent-light: #2980b9;
-      --bg: #fafafa;
-      --card-bg: #fff;
-      --border: #e0e0e0;
-      --section-gap: 2.5rem;
+      --accent-hover: #2980b9;
+      --bg: #fff;
+      --sidebar-bg: #f7f8fa;
+      --border: #e4e7eb;
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       color: var(--text);
       background: var(--bg);
-      line-height: 1.65;
-      font-size: 16px;
+      line-height: 1.7;
+      font-size: 15px;
     }
 
-    a { color: var(--accent-light); text-decoration: none; }
+    a { color: var(--accent-hover); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .container {
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    /* --- Header --- */
-    header {
-      background: var(--accent);
-      color: #fff;
-      padding: 3rem 0 2.5rem;
-    }
-
-    header h1 {
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-size: 2rem;
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-    }
-
-    header .subtitle {
-      font-size: 1.05rem;
-      font-weight: 300;
-      opacity: 0.9;
-      margin-bottom: 1rem;
-    }
-
-    header .bio {
-      font-size: 0.95rem;
-      line-height: 1.7;
-      opacity: 0.88;
-      max-width: 680px;
-    }
-
-    header .credentials {
-      margin-top: 1rem;
-      font-size: 0.85rem;
-      opacity: 0.7;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem 1.2rem;
-    }
-
-    /* --- Nav --- */
-    nav {
-      background: #fff;
-      border-bottom: 1px solid var(--border);
-      position: sticky;
+    /* ---- Sidebar ---- */
+    .sidebar {
+      position: fixed;
       top: 0;
-      z-index: 100;
-    }
-
-    nav ul {
-      list-style: none;
+      left: 0;
+      width: var(--sidebar-w);
+      height: 100vh;
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--border);
       display: flex;
-      flex-wrap: wrap;
-      gap: 0;
+      flex-direction: column;
+      padding: 2.5rem 1.5rem 1.5rem;
+      overflow-y: auto;
     }
 
-    nav a {
-      display: block;
-      padding: 0.75rem 1rem;
-      font-size: 0.85rem;
+    .sidebar-name {
+      font-size: 1.25rem;
       font-weight: 600;
-      color: var(--text-light);
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      transition: color 0.2s;
+      color: var(--accent);
+      line-height: 1.3;
+      margin-bottom: 0.25rem;
     }
 
-    nav a:hover, nav a:focus {
+    .sidebar-tagline {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      line-height: 1.5;
+      margin-bottom: 1.8rem;
+    }
+
+    .sidebar nav {
+      flex: 1;
+    }
+
+    .sidebar nav a {
+      display: block;
+      padding: 0.4rem 0;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      transition: color 0.15s;
+    }
+
+    .sidebar nav a:hover {
       color: var(--accent);
       text-decoration: none;
     }
 
-    /* --- Sections --- */
-    main { padding: 2rem 0 4rem; }
+    .sidebar-social {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
 
-    section { margin-bottom: var(--section-gap); }
+    .sidebar-social a {
+      color: var(--text-light);
+      transition: color 0.15s;
+    }
+    .sidebar-social a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .sidebar-social svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .sidebar-credentials {
+      margin-top: 1rem;
+      font-size: 0.72rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* ---- Main content ---- */
+    .content {
+      margin-left: var(--sidebar-w);
+      max-width: 760px;
+      padding: 2.5rem 2.5rem 4rem;
+    }
+
+    section {
+      margin-bottom: 2.5rem;
+    }
 
     section h2 {
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-size: 1.35rem;
+      font-size: 1.1rem;
       font-weight: 600;
       color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
       border-bottom: 2px solid var(--accent);
-      padding-bottom: 0.35rem;
-      margin-bottom: 1.2rem;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
     }
 
     section h3 {
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 600;
       color: var(--text);
-      margin: 1.2rem 0 0.5rem;
+      margin: 1.4rem 0 0.6rem;
     }
 
-    /* --- Publication list --- */
+    .bio {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text-mid);
+    }
+
+    /* ---- Publication list ---- */
     .pub-list {
       list-style: none;
       counter-reset: pub;
@@ -135,10 +155,10 @@
 
     .pub-list li {
       position: relative;
-      padding: 0.6rem 0 0.6rem 2rem;
+      padding: 0.5rem 0 0.5rem 1.8rem;
       border-bottom: 1px solid #f0f0f0;
-      font-size: 0.93rem;
-      line-height: 1.6;
+      font-size: 0.88rem;
+      line-height: 1.65;
     }
 
     .pub-list li::before {
@@ -146,332 +166,348 @@
       content: counter(pub) ".";
       position: absolute;
       left: 0;
-      color: var(--accent-light);
+      top: 0.55rem;
+      color: var(--accent-hover);
       font-weight: 600;
-      font-size: 0.85rem;
-      top: 0.7rem;
+      font-size: 0.82rem;
     }
 
-    .pub-list .venue {
-      font-style: italic;
-      color: var(--text-light);
-    }
+    .pub-list .venue { font-style: italic; color: var(--text-light); }
+    .pub-list .year { font-weight: 600; color: var(--accent); }
 
-    .pub-list .year {
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    /* --- Simple lists --- */
+    /* ---- Simple list ---- */
     .simple-list {
       list-style: none;
       padding: 0;
     }
 
     .simple-list li {
-      padding: 0.35rem 0 0.35rem 1.2rem;
+      padding: 0.3rem 0 0.3rem 1rem;
       position: relative;
-      font-size: 0.93rem;
+      font-size: 0.88rem;
     }
 
     .simple-list li::before {
-      content: "\2014";
+      content: "\2022";
       position: absolute;
       left: 0;
-      color: var(--accent-light);
+      color: var(--accent-hover);
+      font-weight: bold;
     }
 
-    /* --- Stats row --- */
-    .stats {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .stat {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1rem 1.25rem;
-      flex: 1;
-      min-width: 160px;
-      text-align: center;
-    }
-
-    .stat .number {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--accent);
-      display: block;
-      line-height: 1.1;
-    }
-
-    .stat .label {
-      font-size: 0.8rem;
+    .if-note {
       color: var(--text-light);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-top: 0.25rem;
+      font-size: 0.8rem;
     }
 
-    /* --- Experience --- */
+    /* ---- Roles ---- */
     .role {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
     }
 
     .role-title {
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 0.93rem;
     }
 
-    .role-org {
-      color: var(--accent-light);
-    }
+    .role-org { color: var(--accent-hover); }
 
     .role-period {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-light);
     }
 
     .role-desc {
-      font-size: 0.93rem;
-      margin-top: 0.3rem;
+      font-size: 0.88rem;
+      margin-top: 0.2rem;
+      color: var(--text-mid);
     }
 
-    /* --- Footer --- */
+    /* ---- Footer ---- */
     footer {
-      border-top: 1px solid var(--border);
-      padding: 1.5rem 0;
-      text-align: center;
-      font-size: 0.8rem;
+      margin-left: var(--sidebar-w);
+      padding: 1.5rem 2.5rem;
+      font-size: 0.75rem;
       color: var(--text-light);
+      border-top: 1px solid var(--border);
+      max-width: 760px;
     }
 
-    /* --- Responsive --- */
-    @media (max-width: 600px) {
-      header h1 { font-size: 1.6rem; }
-      header { padding: 2rem 0 1.8rem; }
-      nav a { padding: 0.6rem 0.7rem; font-size: 0.78rem; }
-      .stat { min-width: 130px; }
-      .stats { gap: 0.6rem; }
+    /* ---- Mobile hamburger ---- */
+    .menu-toggle {
+      display: none;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1001;
+      background: var(--sidebar-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.5rem 0.65rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .menu-toggle svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--text-mid);
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      z-index: 999;
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+        z-index: 1000;
+        width: 260px;
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .overlay.open {
+        display: block;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .content {
+        margin-left: 0;
+        padding: 3.5rem 1.25rem 3rem;
+      }
+
+      footer {
+        margin-left: 0;
+        padding: 1.5rem 1.25rem;
+      }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="container">
-    <h1>Vijay Govindarajan</h1>
-    <div class="subtitle">Researcher &amp; Technologist — AI/ML, Healthcare Informatics, Cloud Security</div>
+<!-- Mobile menu button -->
+<button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open'); document.querySelector('.overlay').classList.toggle('open');" aria-label="Menu">
+  <svg viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+</button>
+<div class="overlay" onclick="document.querySelector('.sidebar').classList.remove('open'); this.classList.remove('open');"></div>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-name">Vijay Govindarajan</div>
+  <div class="sidebar-tagline">Researcher &amp; Technologist<br>AI/ML &middot; Healthcare Informatics &middot; Cloud Security</div>
+
+  <nav>
+    <a href="#about">About Me</a>
+    <a href="#publications">Publications</a>
+    <a href="#reviewing">Peer Review</a>
+    <a href="#editorial">Editorial Roles</a>
+    <a href="#committees">Program Committees</a>
+    <a href="#industry">Industry Experience</a>
+  </nav>
+
+  <div class="sidebar-credentials">
+    M.S., Computer Information Systems — Colorado State University<br>
+    B.Eng. — Anna University<br>
+    IEEE Senior Member<br>
+    Fellow, British Computer Society (FBCS)
+  </div>
+
+  <div class="sidebar-social">
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/vijaygovindarajan/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+    </a>
+    <!-- Google Scholar -->
+    <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener" aria-label="Google Scholar">
+      <svg viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-2a5 5 0 1 0 0-10 5 5 0 0 0 0 10zM1.5 4.5 12 0l10.5 4.5L12 9z"/><path d="M2 7v10l4-3V7z"/></svg>
+    </a>
+    <!-- Email -->
+    <a href="mailto:vijayraghavan91@gmail.com" aria-label="Email">
+      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    </a>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<div class="content">
+
+  <!-- About Me -->
+  <section id="about">
+    <h2>About Me</h2>
     <p class="bio">
-      Vijay Govindarajan is a technology leader and researcher specializing in secure cloud systems and privacy-preserving AI for healthcare. His work spans AI/ML, natural language processing, IoT, and healthcare informatics, documented in 25+ peer-reviewed publications cited by researchers across 17+ countries. In industry, he most recently served as TPM3 at Expedia Group on the Pricing team, driving initiatives that delivered over $192M in revenue impact, and previously held roles across IT infrastructure and program management.
+      I am a technology leader and researcher specializing in secure cloud systems and privacy-preserving AI for healthcare. My work spans AI/ML, natural language processing, IoT, and healthcare informatics, documented in 25+ peer-reviewed publications cited by researchers across 17+ countries. In industry, I most recently served as Technical Program Manager III at Expedia Group on the Pricing team, driving initiatives that delivered over $192M in revenue impact. I hold an M.S. in Computer Information Systems from Colorado State University.
     </p>
-    <div class="credentials">
-      <span>M.S., Computer Information Systems — Colorado State University</span>
-      <span>B.Eng. — Anna University</span>
-      <span>IEEE Senior Member</span>
-      <span>Fellow, British Computer Society (FBCS)</span>
-    </div>
-  </div>
-</header>
+  </section>
 
-<nav>
-  <div class="container">
-    <ul>
-      <li><a href="#publications">Publications</a></li>
-      <li><a href="#reviewing">Reviewing</a></li>
-      <li><a href="#editorial">Editorial</a></li>
-      <li><a href="#committees">Committees</a></li>
-      <li><a href="#industry">Industry</a></li>
+  <!-- Publications -->
+  <section id="publications">
+    <h2>Publications</h2>
+
+    <h3>Journal Articles</h3>
+    <ol class="pub-list">
+      <li>
+        Aegis-5: A Hybrid Ensemble Framework for Intrusion Detection in Industry 5.0 Driven Smart Manufacturing Environment.
+        <span class="venue">ACM Transactions on Autonomous and Adaptive Systems,</span> <span class="year">2026</span>
+      </li>
+      <li>
+        Advanced cloud intrusion detection framework using graph based features transformers and contrastive learning.
+        <span class="venue">Scientific Reports,</span> <span class="year">2025</span>
+      </li>
+      <li>
+        Role of cloud-deployed graph neural networks in mapping coronary artery disease progression: A systematic review.
+        <span class="venue">Journal of Medical &amp; Health Sciences Review,</span> <span class="year">2025</span>
+      </li>
+      <li>
+        An interpretable hybrid deep learning framework for gastric cancer diagnosis using histopathological imaging.
+        <span class="venue">Scientific Reports,</span> <span class="year">2025</span>
+      </li>
+      <li>
+        NeuroNimbus: Enabling Privacy-Preserving Real-Time Clinical Intelligence via Federated and Cloud-Orchestrated Deep Learning.
+        <span class="venue">IEEE Access,</span> <span class="year">2025</span>
+      </li>
+      <li>
+        A novel system for managing encrypted data using searchable encryption techniques.
+        <span class="venue">International Journal of Advanced Computer Science and Applications,</span> <span class="year">2025</span>
+      </li>
+      <li>
+        Automated Alzheimer's disease detection using active learning model with reinforcement learning and scope loss function.
+        <span class="venue">npj Mental Health Research,</span> <span class="year">2025</span>
+      </li>
+      <li>
+        MSPO: A machine learning hyperparameter optimization method for enhanced breast cancer image classification.
+        <span class="venue">Digital Health,</span> <span class="year">2025</span>
+      </li>
+      <li>
+        Privacy-aware hierarchical federated learning in healthcare: integrating differential privacy and secure multi-party computation.
+        <span class="venue">Future Internet,</span> <span class="year">2025</span>
+      </li>
+      <li>
+        Federated learning–driven privacy-preserving framework for decentralized data analysis and anomaly detection in contract review.
+        <span class="venue">International Journal of Advanced Computer Science and Applications,</span> <span class="year">2025</span>
+      </li>
+      <li>
+        DDoS attack detection in consumer IoT-based healthcare systems using improved off-policy proximal policy optimization and generative adversarial network.
+        <span class="venue">IEEE Transactions on Consumer Electronics,</span> <span class="year">2025</span>
+      </li>
+      <li>
+        Enhancing cryptographic security in smart consumer electronics with a hybrid classical–post-quantum framework.
+        <span class="venue">IEEE Transactions on Consumer Electronics,</span> <span class="year">2025</span>
+      </li>
+      <li>
+        Early detection and risk stratification of osteosarcoma, a rare tumor, using artificial intelligence: A systematic review.
+        <span class="venue">Advances in Artificial Intelligence and Machine Learning,</span> <span class="year">2024</span>
+      </li>
+      <li>
+        A hybrid cloud-integrated autoencoder–GNN architecture for adaptive, high-dimensional anomaly detection in U.S. financial services compliance monitoring.
+        <span class="venue">Spectrum of Research,</span> <span class="year">2022</span>
+      </li>
+    </ol>
+
+    <h3>Conference Papers</h3>
+    <ol class="pub-list">
+      <li>
+        MAGIC-Enhanced Keyword Prompting for Zero-Shot Audio Captioning with CLIP Models.
+        <span class="venue">26th International Conference on Web Information Systems Engineering (WISE),</span> <span class="year">2025</span>
+      </li>
+      <li>
+        Do Clinical Question Answering Systems Really Need Specialised Medical Fine Tuning?
+        <span class="venue">19th Conference of the European Chapter of the Association for Computational Linguistics (EACL), Industry Track,</span> <span class="year">2025</span>
+      </li>
+      <li>
+        Machine learning–based approach for handling imbalanced data for intrusion detection in the cloud environment.
+        <span class="venue">IEEE International Conference on Disruptive Technologies,</span> <span class="year">2025</span>
+      </li>
+      <li>
+        RAW: A novel reconfigurable architecture design using wireless for future generation supercomputers.
+        <span class="venue">International Conference on Networks &amp; Communications (Springer),</span> <span class="year">2013</span>
+      </li>
+      <li>
+        MACREE — A modern approach for classification and recognition of earthquakes and explosions.
+        <span class="venue">International Conference on Advances in Computing and Information Technology (Springer),</span> <span class="year">2013</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Peer Review -->
+  <section id="reviewing">
+    <h2>Peer Review</h2>
+    <p style="margin-bottom: 0.6rem; font-size: 0.9rem; color: var(--text-mid);">
+      Completed 120+ invited peer reviews for leading journals and conferences, including:
+    </p>
+    <ul class="simple-list">
+      <li>Reliability Engineering &amp; System Safety <span class="if-note">(IF 11.0, #1 in Quality &amp; Reliability)</span></li>
+      <li>IEEE Internet of Things Journal <span class="if-note">(IF 8.9, #1 in Computing Systems)</span></li>
+      <li>Engineering Applications of Artificial Intelligence <span class="if-note">(IF 8.0)</span></li>
+      <li>IEEE Transactions on Dependable and Secure Computing <span class="if-note">(IF 7.5)</span></li>
+      <li>IEEE Transactions on Services Computing <span class="if-note">(IF 5.8)</span></li>
+      <li>Journal of Systems and Software <span class="if-note">(IF 4.1)</span></li>
+      <li>IEEE Access</li>
+      <li>PLOS One</li>
     </ul>
-  </div>
-</nav>
+  </section>
 
-<main>
-  <div class="container">
+  <!-- Editorial Roles -->
+  <section id="editorial">
+    <h2>Editorial Roles</h2>
+    <h3>Associate Editor</h3>
+    <ul class="simple-list">
+      <li>IEEE Internet of Things Journal <span class="if-note">(IF 8.9, #1 in Computing Systems)</span></li>
+      <li>npj Digital Medicine <span class="if-note">(IF 15.1, #2 in Medical Informatics)</span></li>
+    </ul>
+  </section>
 
-    <!-- Research Impact -->
-    <section>
-      <div class="stats">
-        <div class="stat">
-          <span class="number">25+</span>
-          <span class="label">Publications</span>
-        </div>
-        <div class="stat">
-          <span class="number">319+</span>
-          <span class="label">Citations</span>
-        </div>
-        <div class="stat">
-          <span class="number">11</span>
-          <span class="label">h-index</span>
-        </div>
-        <div class="stat">
-          <span class="number">120+</span>
-          <span class="label">Peer Reviews</span>
-        </div>
+  <!-- Program Committees -->
+  <section id="committees">
+    <h2>Program Committees</h2>
+    <ul class="simple-list">
+      <li>ACM EuroSys</li>
+      <li>IEEE International Conference on Healthcare Informatics (ICHI)</li>
+      <li>IEEE Cluster Computing Conference</li>
+      <li>International Conference on Web Engineering</li>
+      <li>European Conference on Software Architecture</li>
+      <li>International Conference on Business Information Systems</li>
+      <li>International Conference on Edge Computing and Communications</li>
+      <li>International Conference on Communications, Circuits, and Systems</li>
+      <li>IEEE Annual Congress on Artificial Intelligence of Things</li>
+    </ul>
+  </section>
+
+  <!-- Industry Experience -->
+  <section id="industry">
+    <h2>Industry Experience</h2>
+
+    <div class="role">
+      <div class="role-title">Technical Program Manager III <span class="role-org">— Expedia Group</span></div>
+      <div class="role-period">Oct 2022 – Jan 2026 &middot; Seattle, WA</div>
+      <div class="role-desc">
+        Led mission-critical infrastructure and platform initiatives on the Pricing team, including currency conversion system unification, AWS Availability Zones expansion, and deployment modernization. Initiatives collectively delivered $192M+ in revenue impact and cost savings. Recipient of the Vrbie Award for Best Initiative for Driving Traveler Value.
       </div>
-    </section>
+    </div>
 
-    <!-- Publications -->
-    <section id="publications">
-      <h2>Publications</h2>
-
-      <h3>Journal Articles</h3>
-      <ol class="pub-list">
-        <li>
-          Aegis-5: A Hybrid Ensemble Framework for Intrusion Detection in Industry 5.0 Driven Smart Manufacturing Environment.
-          <span class="venue">ACM Transactions on Autonomous and Adaptive Systems,</span> <span class="year">2026</span>
-        </li>
-        <li>
-          Advanced cloud intrusion detection framework using graph based features transformers and contrastive learning.
-          <span class="venue">Scientific Reports,</span> <span class="year">2025</span>
-        </li>
-        <li>
-          Role of cloud-deployed graph neural networks in mapping coronary artery disease progression: A systematic review.
-          <span class="venue">Journal of Medical &amp; Health Sciences Review,</span> <span class="year">2025</span>
-        </li>
-        <li>
-          An interpretable hybrid deep learning framework for gastric cancer diagnosis using histopathological imaging.
-          <span class="venue">Scientific Reports,</span> <span class="year">2025</span>
-        </li>
-        <li>
-          NeuroNimbus: Enabling Privacy-Preserving Real-Time Clinical Intelligence via Federated and Cloud-Orchestrated Deep Learning.
-          <span class="venue">IEEE Access,</span> <span class="year">2025</span>
-        </li>
-        <li>
-          A novel system for managing encrypted data using searchable encryption techniques.
-          <span class="venue">International Journal of Advanced Computer Science and Applications,</span> <span class="year">2025</span>
-        </li>
-        <li>
-          Automated Alzheimer's disease detection using active learning model with reinforcement learning and scope loss function.
-          <span class="venue">npj Mental Health Research,</span> <span class="year">2025</span>
-        </li>
-        <li>
-          MSPO: A machine learning hyperparameter optimization method for enhanced breast cancer image classification.
-          <span class="venue">Digital Health,</span> <span class="year">2025</span>
-        </li>
-        <li>
-          Privacy-aware hierarchical federated learning in healthcare: integrating differential privacy and secure multi-party computation.
-          <span class="venue">Future Internet,</span> <span class="year">2025</span>
-        </li>
-        <li>
-          Federated learning–driven privacy-preserving framework for decentralized data analysis and anomaly detection in contract review.
-          <span class="venue">International Journal of Advanced Computer Science and Applications,</span> <span class="year">2025</span>
-        </li>
-        <li>
-          DDoS attack detection in consumer IoT-based healthcare systems using improved off-policy proximal policy optimization and generative adversarial network.
-          <span class="venue">IEEE Transactions on Consumer Electronics,</span> <span class="year">2025</span>
-        </li>
-        <li>
-          Enhancing cryptographic security in smart consumer electronics with a hybrid classical–post-quantum framework.
-          <span class="venue">IEEE Transactions on Consumer Electronics,</span> <span class="year">2025</span>
-        </li>
-        <li>
-          Early detection and risk stratification of osteosarcoma, a rare tumor, using artificial intelligence: A systematic review.
-          <span class="venue">Advances in Artificial Intelligence and Machine Learning,</span> <span class="year">2024</span>
-        </li>
-        <li>
-          A hybrid cloud-integrated autoencoder–GNN architecture for adaptive, high-dimensional anomaly detection in U.S. financial services compliance monitoring.
-          <span class="venue">Spectrum of Research,</span> <span class="year">2022</span>
-        </li>
-      </ol>
-
-      <h3>Conference Papers</h3>
-      <ol class="pub-list">
-        <li>
-          MAGIC-Enhanced Keyword Prompting for Zero-Shot Audio Captioning with CLIP Models.
-          <span class="venue">26th International Conference on Web Information Systems Engineering (WISE),</span> <span class="year">2025</span>
-        </li>
-        <li>
-          Do Clinical Question Answering Systems Really Need Specialised Medical Fine Tuning?
-          <span class="venue">19th Conference of the European Chapter of the Association for Computational Linguistics (EACL), Industry Track,</span> <span class="year">2025</span>
-        </li>
-        <li>
-          Machine learning–based approach for handling imbalanced data for intrusion detection in the cloud environment.
-          <span class="venue">IEEE International Conference on Disruptive Technologies,</span> <span class="year">2025</span>
-        </li>
-        <li>
-          RAW: A novel reconfigurable architecture design using wireless for future generation supercomputers.
-          <span class="venue">International Conference on Networks &amp; Communications (Springer),</span> <span class="year">2013</span>
-        </li>
-        <li>
-          MACREE — A modern approach for classification and recognition of earthquakes and explosions.
-          <span class="venue">International Conference on Advances in Computing and Information Technology (Springer),</span> <span class="year">2013</span>
-        </li>
-      </ol>
-    </section>
-
-    <!-- Peer Review -->
-    <section id="reviewing">
-      <h2>Peer Review</h2>
-      <p style="margin-bottom: 0.8rem; font-size: 0.95rem;">
-        Completed 120+ invited peer reviews for leading journals and conferences, including:
-      </p>
-      <ul class="simple-list">
-        <li>Reliability Engineering &amp; System Safety <span style="color:var(--text-light); font-size:0.85rem;">(IF 11.0, #1 in Quality &amp; Reliability)</span></li>
-        <li>IEEE Internet of Things Journal <span style="color:var(--text-light); font-size:0.85rem;">(IF 8.9, #1 in Computing Systems)</span></li>
-        <li>Engineering Applications of Artificial Intelligence <span style="color:var(--text-light); font-size:0.85rem;">(IF 8.0)</span></li>
-        <li>IEEE Transactions on Dependable and Secure Computing <span style="color:var(--text-light); font-size:0.85rem;">(IF 7.5)</span></li>
-        <li>IEEE Transactions on Services Computing <span style="color:var(--text-light); font-size:0.85rem;">(IF 5.8)</span></li>
-        <li>Journal of Systems and Software <span style="color:var(--text-light); font-size:0.85rem;">(IF 4.1)</span></li>
-        <li>IEEE Access</li>
-        <li>PLOS One</li>
-      </ul>
-    </section>
-
-    <!-- Editorial Roles -->
-    <section id="editorial">
-      <h2>Associate Editor</h2>
-      <ul class="simple-list">
-        <li>IEEE Internet of Things Journal <span style="color:var(--text-light); font-size:0.85rem;">(IF 8.9, #1 in Computing Systems)</span></li>
-        <li>npj Digital Medicine <span style="color:var(--text-light); font-size:0.85rem;">(IF 15.1, #2 in Medical Informatics)</span></li>
-      </ul>
-    </section>
-
-    <!-- Program Committees -->
-    <section id="committees">
-      <h2>Program Committees</h2>
-      <ul class="simple-list">
-        <li>ACM EuroSys</li>
-        <li>IEEE International Conference on Healthcare Informatics (ICHI)</li>
-        <li>IEEE Cluster Computing Conference</li>
-        <li>International Conference on Web Engineering</li>
-        <li>European Conference on Software Architecture</li>
-        <li>International Conference on Business Information Systems</li>
-        <li>International Conference on Edge Computing and Communications</li>
-        <li>International Conference on Communications, Circuits, and Systems</li>
-        <li>IEEE Annual Congress on Artificial Intelligence of Things</li>
-      </ul>
-    </section>
-
-    <!-- Industry Experience -->
-    <section id="industry">
-      <h2>Industry Experience</h2>
-
-      <div class="role">
-        <div class="role-title">Technical Program Manager III <span class="role-org">— Expedia Group</span></div>
-        <div class="role-period">Oct 2022 – Jan 2026 · Seattle, WA</div>
-        <div class="role-desc">
-          Led mission-critical infrastructure and platform initiatives on the Pricing team, including currency conversion system unification, AWS Availability Zones expansion, and deployment modernization. Initiatives collectively delivered $192M+ in revenue impact and cost savings. Recipient of the Vrbie Award for Best Initiative for Driving Traveler Value.
-        </div>
+    <div class="role">
+      <div class="role-title">Prior Roles</div>
+      <div class="role-desc">
+        Program management and IT roles across enterprise technology, with a consistent focus on distributed systems, cloud infrastructure, and data-driven platforms.
       </div>
+    </div>
+  </section>
 
-      <div class="role">
-        <div class="role-title">Prior Roles</div>
-        <div class="role-desc">
-          Program management and IT roles across enterprise technology, with a consistent focus on distributed systems, cloud infrastructure, and data-driven platforms.
-        </div>
-      </div>
-    </section>
-
-  </div>
-</main>
+</div>
 
 <footer>
-  <div class="container">
-    &copy; 2026 Vijay Govindarajan
-  </div>
+  &copy; 2026 Vijay Govindarajan
 </footer>
 
 </body>
