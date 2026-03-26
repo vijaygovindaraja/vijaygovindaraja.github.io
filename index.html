@@ -19,247 +19,206 @@
     a { color: #0077B5; text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* ---- Header / Profile ---- */
+    /* ---- Header ---- */
     .header {
       text-align: center;
-      padding: 3rem 1.5rem 2rem;
+      padding: 3rem 1.5rem 1.5rem;
       background: #f8f9fa;
-      border-bottom: 1px solid #e9ecef;
     }
 
     .profile-photo {
-      width: 150px;
-      height: 150px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       object-fit: cover;
       border: 4px solid #fff;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       margin-bottom: 1rem;
-      background: #ddd;
     }
 
     .header h1 {
       font-size: 1.8rem;
       font-weight: 700;
       color: #222;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.25rem;
     }
 
     .header .tagline {
-      font-size: 1rem;
+      font-size: 0.95rem;
       color: #555;
       font-weight: 400;
-      margin-bottom: 0.2rem;
-    }
-
-    .header .sub-tagline {
-      font-size: 0.85rem;
-      color: #888;
-      margin-bottom: 1.2rem;
     }
 
     .social-links {
       display: flex;
       justify-content: center;
-      gap: 1rem;
+      gap: 0.9rem;
       flex-wrap: wrap;
+      margin-top: 1rem;
     }
 
     .social-links a {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      font-size: 0.85rem;
-      color: #555;
+      gap: 0.3rem;
+      font-size: 0.82rem;
+      color: #666;
       transition: color 0.2s;
     }
 
-    .social-links a:hover {
-      color: #0077B5;
-      text-decoration: none;
-    }
+    .social-links a:hover { color: #0077B5; text-decoration: none; }
 
-    .social-links svg {
-      width: 18px;
-      height: 18px;
-      fill: currentColor;
-    }
+    .social-links svg { width: 16px; height: 16px; fill: currentColor; }
 
-    /* ---- Navigation ---- */
-    .nav {
+    /* ---- Tabs ---- */
+    .tabs {
+      display: flex;
+      justify-content: center;
       background: #fff;
+      border-top: 1px solid #e9ecef;
       border-bottom: 1px solid #e9ecef;
-      padding: 0.8rem 1.5rem;
-      text-align: center;
       position: sticky;
       top: 0;
       z-index: 100;
     }
 
-    .nav a {
-      display: inline-block;
-      margin: 0 1rem;
-      font-size: 0.9rem;
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-family: inherit;
+      font-size: 0.88rem;
       font-weight: 600;
-      color: #555;
-      padding: 0.3rem 0;
-      border-bottom: 2px solid transparent;
+      color: #777;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
       transition: color 0.2s, border-color 0.2s;
     }
 
-    .nav a:hover {
+    .tab-btn:hover { color: #333; }
+
+    .tab-btn.active {
       color: #0077B5;
       border-bottom-color: #0077B5;
-      text-decoration: none;
     }
 
-    /* ---- Main Content ---- */
-    .container {
-      max-width: 800px;
+    /* ---- Tab Content ---- */
+    .tab-content {
+      max-width: 780px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 2rem 2rem 3rem;
+      min-height: 400px;
     }
 
-    section {
-      padding: 2.5rem 0;
-      border-bottom: 1px solid #eee;
-    }
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
 
-    section:last-child {
-      border-bottom: none;
-    }
-
-    section h2 {
-      font-size: 1.3rem;
+    .tab-pane h2 {
+      font-size: 1.15rem;
       font-weight: 700;
       color: #222;
-      margin-bottom: 1.2rem;
       text-transform: uppercase;
       letter-spacing: 0.03em;
+      margin-bottom: 1rem;
     }
 
+    /* ---- About ---- */
     .bio {
       font-size: 0.95rem;
-      line-height: 1.8;
+      line-height: 1.85;
       color: #444;
+      margin-bottom: 0.8rem;
     }
 
-    /* ---- Resume Section ---- */
-    .resume-section h3 {
-      font-size: 1.05rem;
+    .cv-download {
+      display: inline-block;
+      margin-top: 0.8rem;
+      padding: 0.5rem 1.3rem;
+      background: #0077B5;
+      color: #fff;
+      border-radius: 4px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .cv-download:hover { background: #005f8d; text-decoration: none; color: #fff; }
+
+    /* ---- Resume ---- */
+    .section-label {
+      font-size: 0.95rem;
       font-weight: 700;
       color: #333;
-      margin: 1.8rem 0 1rem;
-      padding-bottom: 0.3rem;
+      margin: 1.5rem 0 0.8rem;
+      padding-bottom: 0.25rem;
       border-bottom: 1px solid #eee;
     }
 
-    .resume-section h3:first-child {
-      margin-top: 0;
-    }
+    .section-label:first-child { margin-top: 0; }
 
     .entry {
       display: flex;
       gap: 1.5rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
 
     .entry-date {
       flex-shrink: 0;
-      width: 140px;
+      width: 135px;
       font-size: 0.82rem;
       color: #888;
-      padding-top: 0.15rem;
+      padding-top: 0.1rem;
     }
 
-    .entry-content {
-      flex: 1;
-    }
+    .entry-content { flex: 1; }
 
-    .entry-title {
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: #222;
-    }
-
-    .entry-org {
-      color: #0077B5;
-      font-weight: 400;
-    }
+    .entry-title { font-weight: 600; font-size: 0.93rem; color: #222; }
+    .entry-org { color: #0077B5; font-weight: 400; }
 
     .entry-detail {
-      font-size: 0.88rem;
+      font-size: 0.87rem;
       color: #555;
-      margin-top: 0.3rem;
+      margin-top: 0.25rem;
     }
 
-    .entry-detail ul {
-      margin-top: 0.3rem;
-      padding-left: 1.2rem;
-    }
+    .entry-detail ul { margin-top: 0.25rem; padding-left: 1.2rem; }
+    .entry-detail li { margin-bottom: 0.15rem; }
 
-    .entry-detail li {
-      margin-bottom: 0.2rem;
-    }
-
-    /* ---- Affiliations ---- */
-    .affiliations {
+    .badges {
       display: flex;
-      gap: 1.5rem;
+      gap: 0.8rem;
       flex-wrap: wrap;
-      align-items: center;
+      margin: 0.5rem 0;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.3rem 0.7rem;
+      background: #f0f4f8;
+      border: 1px solid #dce3ea;
+      border-radius: 3px;
+      font-size: 0.8rem;
+      color: #555;
+      font-weight: 600;
+    }
+
+    .sub-section {
       margin-top: 1rem;
     }
 
-    .affiliation-badge {
-      display: inline-block;
-      padding: 0.4rem 0.8rem;
-      background: #f8f9fa;
-      border: 1px solid #e9ecef;
-      border-radius: 4px;
-      font-size: 0.82rem;
-      color: #555;
-      font-weight: 600;
-    }
-
-    /* ---- Publication list ---- */
-    .pub-list {
-      list-style: none;
-      counter-reset: pub;
-    }
-
-    .pub-list li {
-      position: relative;
-      padding: 0.6rem 0 0.6rem 2rem;
-      border-bottom: 1px solid #f5f5f5;
+    .sub-section-title {
       font-size: 0.88rem;
-      line-height: 1.65;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 0.4rem;
     }
 
-    .pub-list li::before {
-      counter-increment: pub;
-      content: counter(pub) ".";
-      position: absolute;
-      left: 0;
-      top: 0.65rem;
-      color: #0077B5;
-      font-weight: 700;
-      font-size: 0.82rem;
-    }
-
-    .pub-list .venue { font-style: italic; color: #888; }
-    .pub-list .year { font-weight: 700; color: #333; }
-
-    /* ---- Simple list ---- */
-    .simple-list {
-      list-style: none;
-      padding: 0;
-    }
+    .simple-list { list-style: none; padding: 0; }
 
     .simple-list li {
-      padding: 0.35rem 0 0.35rem 1.2rem;
+      padding: 0.25rem 0 0.25rem 1rem;
       position: relative;
-      font-size: 0.9rem;
+      font-size: 0.87rem;
     }
 
     .simple-list li::before {
@@ -270,69 +229,64 @@
       font-weight: bold;
     }
 
-    .if-note {
-      color: #999;
+    .if-note { color: #999; font-size: 0.78rem; }
+
+    /* ---- Publications ---- */
+    .pub-list { list-style: none; counter-reset: pub; }
+
+    .pub-list li {
+      position: relative;
+      padding: 0.5rem 0 0.5rem 1.8rem;
+      border-bottom: 1px solid #f5f5f5;
+      font-size: 0.87rem;
+      line-height: 1.6;
+    }
+
+    .pub-list li::before {
+      counter-increment: pub;
+      content: counter(pub) ".";
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      color: #0077B5;
+      font-weight: 700;
       font-size: 0.8rem;
     }
 
+    .pub-list .venue { font-style: italic; color: #888; }
+    .pub-list .year { font-weight: 700; color: #333; }
+
     /* ---- Contact ---- */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-    }
+    .contact-list { margin-top: 0.5rem; }
 
     .contact-item {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
       font-size: 0.9rem;
       color: #555;
+      padding: 0.5rem 0;
     }
 
-    .contact-item svg {
-      width: 18px;
-      height: 18px;
-      fill: #0077B5;
-      flex-shrink: 0;
-    }
-
-    /* ---- CV Download ---- */
-    .cv-download {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.6rem 1.5rem;
-      background: #0077B5;
-      color: #fff;
-      border-radius: 4px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: background 0.2s;
-    }
-
-    .cv-download:hover {
-      background: #005f8d;
-      text-decoration: none;
-      color: #fff;
-    }
+    .contact-item svg { width: 18px; height: 18px; fill: #0077B5; flex-shrink: 0; }
 
     /* ---- Footer ---- */
     footer {
       text-align: center;
-      padding: 2rem 1.5rem;
-      font-size: 0.78rem;
-      color: #999;
+      padding: 1.5rem;
+      font-size: 0.75rem;
+      color: #bbb;
       border-top: 1px solid #eee;
     }
 
     /* ---- Responsive ---- */
     @media (max-width: 600px) {
-      .container { padding: 0 1.2rem; }
-      .nav a { margin: 0 0.5rem; font-size: 0.82rem; }
-      .entry { flex-direction: column; gap: 0.2rem; }
+      .tab-content { padding: 1.5rem 1.2rem 2rem; }
+      .tab-btn { padding: 0.65rem 0.8rem; font-size: 0.8rem; }
+      .entry { flex-direction: column; gap: 0.15rem; }
       .entry-date { width: auto; }
       .header h1 { font-size: 1.5rem; }
-      .profile-photo { width: 120px; height: 120px; }
+      .profile-photo { width: 110px; height: 110px; }
     }
   </style>
 </head>
@@ -342,8 +296,7 @@
 <div class="header">
   <img src="photo.jpg" alt="Vijay Govindarajan" class="profile-photo">
   <h1>Vijay Govindarajan</h1>
-  <div class="tagline">Program Manager | AI Researcher</div>
-  <div class="sub-tagline">IEEE Senior Member &middot; Fellow, British Computer Society (FBCS)</div>
+  <div class="tagline">Technical Program Manager | Researcher</div>
   <div class="social-links">
     <a href="https://www.linkedin.com/in/vijaygovindarajan/" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
@@ -351,7 +304,7 @@
     </a>
     <a href="https://scholar.google.com/citations?user=2BU814UAAAAJ&hl=en" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-2a5 5 0 1 0 0-10 5 5 0 0 0 0 10zM1.5 4.5 12 0l10.5 4.5L12 9z"/><path d="M2 7v10l4-3V7z"/></svg>
-      Google Scholar
+      Scholar
     </a>
     <a href="https://orcid.org/0009-0004-1915-1519" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-1.847-1.238-3.722-3.806-3.722h-2.513z"/></svg>
@@ -368,34 +321,37 @@
   </div>
 </div>
 
-<!-- Navigation -->
-<nav class="nav">
-  <a href="#about-me">About Me</a>
-  <a href="#resume">Resume</a>
-  <a href="#publications">Publications</a>
-  <a href="#contact">Contact</a>
-</nav>
+<!-- Tabs -->
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('about-me')">About Me</button>
+  <button class="tab-btn" onclick="switchTab('resume')">Resume</button>
+  <button class="tab-btn" onclick="switchTab('publications')">Publications</button>
+  <button class="tab-btn" onclick="switchTab('contact')">Contact</button>
+</div>
 
-<!-- Main Content -->
-<div class="container">
+<!-- Tab Content -->
+<div class="tab-content">
 
   <!-- About Me -->
-  <section id="about-me">
+  <div id="about-me" class="tab-pane active">
     <h2>About Me</h2>
     <p class="bio">
-      I am a researcher and program manager working at the intersection of AI and healthcare. My research focuses on medical AI diagnostics, privacy-preserving healthcare systems, and federated learning for clinical applications, with additional interests in cloud security, explainable AI, and graph neural networks. I have 48 peer-reviewed publications (379 citations, h-index: 13) and serve as Associate Editor for IEEE Internet of Things Journal and npj Digital Medicine.
+      I specialize in distributed systems, cloud infrastructure, and systems performance. My research interests include privacy-preserving healthcare systems, federated learning for clinical applications, and medical AI diagnostics.
     </p>
-    <p class="bio" style="margin-top: 0.8rem;">
-      In industry, I have led large-scale technical programs at Expedia Group and Microsoft, managing initiatives that delivered over $192M in combined revenue impact and cost savings.
+    <p class="bio">
+      I act as a technical owner and decision-maker for complex initiatives, leading zero-to-one efforts and guiding cross-functional teams. I balance hands-on system design and implementation with mentorship, stakeholder alignment, and delivery of durable, production-grade solutions.
+    </p>
+    <p class="bio">
+      I have 48 peer-reviewed publications and serve as Associate Editor for IEEE Internet of Things Journal and npj Digital Medicine.
     </p>
     <a href="Vijay_Govindarajan.pdf" class="cv-download" target="_blank">Download CV</a>
-  </section>
+  </div>
 
   <!-- Resume -->
-  <section id="resume" class="resume-section">
+  <div id="resume" class="tab-pane">
     <h2>Resume</h2>
 
-    <h3>Education</h3>
+    <div class="section-label">Education</div>
     <div class="entry">
       <div class="entry-date">2013 &ndash; 2015</div>
       <div class="entry-content">
@@ -411,7 +367,7 @@
       </div>
     </div>
 
-    <h3>Experience</h3>
+    <div class="section-label">Experience</div>
     <div class="entry">
       <div class="entry-date">Aug 2022 &ndash; Present</div>
       <div class="entry-content">
@@ -449,21 +405,23 @@
       </div>
     </div>
 
-    <h3>Affiliations &amp; Service</h3>
-    <div class="affiliations">
-      <span class="affiliation-badge">IEEE Senior Member</span>
-      <span class="affiliation-badge">FBCS</span>
-      <span class="affiliation-badge">Full Member, APM</span>
+    <div class="section-label">Affiliations</div>
+    <div class="badges">
+      <span class="badge">IEEE Senior Member</span>
+      <span class="badge">Fellow, British Computer Society</span>
+      <span class="badge">Full Member, APM</span>
     </div>
-    <div style="margin-top: 1rem;">
-      <p style="font-size: 0.9rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Associate Editor</p>
+
+    <div class="sub-section">
+      <div class="sub-section-title">Associate Editor</div>
       <ul class="simple-list">
         <li>IEEE Internet of Things Journal <span class="if-note">(IF 8.9)</span></li>
         <li>npj Digital Medicine <span class="if-note">(IF 15.1)</span></li>
       </ul>
     </div>
-    <div style="margin-top: 1rem;">
-      <p style="font-size: 0.9rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Program Committee Member</p>
+
+    <div class="sub-section">
+      <div class="sub-section-title">Program Committee Member</div>
       <ul class="simple-list">
         <li>ACM EuroSys</li>
         <li>IEEE International Conference on Healthcare Informatics (ICHI)</li>
@@ -472,8 +430,9 @@
         <li>European Conference on Software Architecture</li>
       </ul>
     </div>
-    <div style="margin-top: 1rem;">
-      <p style="font-size: 0.9rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Peer Reviewer (120+ reviews)</p>
+
+    <div class="sub-section">
+      <div class="sub-section-title">Peer Reviewer (120+ reviews)</div>
       <ul class="simple-list">
         <li>Reliability Engineering &amp; System Safety <span class="if-note">(IF 11.0)</span></li>
         <li>IEEE Internet of Things Journal <span class="if-note">(IF 8.9)</span></li>
@@ -483,13 +442,13 @@
         <li>PLOS One &middot; IEEE Access &middot; Journal of Systems and Software</li>
       </ul>
     </div>
-  </section>
+  </div>
 
   <!-- Publications -->
-  <section id="publications" class="resume-section">
+  <div id="publications" class="tab-pane">
     <h2>Publications</h2>
 
-    <h3>Journal Articles</h3>
+    <div class="section-label">Journal Articles</div>
     <ol class="pub-list">
       <li>
         Aegis-5: A Hybrid Ensemble Framework for Intrusion Detection in Industry 5.0 Driven Smart Manufacturing Environment.
@@ -549,7 +508,7 @@
       </li>
     </ol>
 
-    <h3>Conference Papers</h3>
+    <div class="section-label">Conference Papers</div>
     <ol class="pub-list">
       <li>
         MAGIC-Enhanced Keyword Prompting for Zero-Shot Audio Captioning with CLIP Models.
@@ -572,12 +531,12 @@
         <span class="venue">International Conference on Advances in Computing and Information Technology (Springer),</span> <span class="year">2013</span>
       </li>
     </ol>
-  </section>
+  </div>
 
   <!-- Contact -->
-  <section id="contact">
+  <div id="contact" class="tab-pane">
     <h2>Contact</h2>
-    <div class="contact-grid">
+    <div class="contact-list">
       <div class="contact-item">
         <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
         <a href="mailto:vijay.govindarajan91@gmail.com">vijay.govindarajan91@gmail.com</a>
@@ -592,13 +551,23 @@
       </div>
     </div>
     <a href="Vijay_Govindarajan.pdf" class="cv-download" target="_blank" style="margin-top: 1.5rem;">Download CV</a>
-  </section>
+  </div>
 
 </div>
 
 <footer>
-  &copy; 2026 Vijay Govindarajan. All rights reserved.
+  &copy; 2026 Vijay Govindarajan
 </footer>
+
+<script>
+function switchTab(tabId) {
+  document.querySelectorAll('.tab-pane').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  document.getElementById(tabId).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
 
 </body>
 </html>
