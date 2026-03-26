@@ -4,147 +4,222 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vijay Govindarajan</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --sidebar-w: 260px;
-      --text: #2d2d2d;
-      --text-mid: #555;
-      --text-light: #777;
-      --accent: #1a5276;
-      --accent-hover: #2980b9;
-      --bg: #fff;
-      --sidebar-bg: #f7f8fa;
-      --border: #e4e7eb;
-    }
-
-    html { scroll-behavior: smooth; }
-
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color: var(--text);
-      background: var(--bg);
+      font-family: 'Open Sans', sans-serif;
+      color: #333;
+      background: #fff;
       line-height: 1.7;
       font-size: 15px;
     }
 
-    a { color: var(--accent-hover); text-decoration: none; }
+    a { color: #0077B5; text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* ---- Sidebar ---- */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: var(--sidebar-w);
-      height: 100vh;
-      background: var(--sidebar-bg);
-      border-right: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      padding: 2.5rem 1.5rem 1.5rem;
-      overflow-y: auto;
+    /* ---- Header / Profile ---- */
+    .header {
+      text-align: center;
+      padding: 3rem 1.5rem 2rem;
+      background: #f8f9fa;
+      border-bottom: 1px solid #e9ecef;
     }
 
-    .sidebar-name {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--accent);
-      line-height: 1.3;
-      margin-bottom: 0.25rem;
+    .profile-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
+      background: #ddd;
     }
 
-    .sidebar-tagline {
-      font-size: 0.78rem;
-      color: var(--text-light);
-      line-height: 1.5;
-      margin-bottom: 1.8rem;
+    .header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 0.3rem;
     }
 
-    .sidebar nav {
-      flex: 1;
+    .header .tagline {
+      font-size: 1rem;
+      color: #555;
+      font-weight: 400;
+      margin-bottom: 0.2rem;
     }
 
-    .sidebar nav a {
-      display: block;
-      padding: 0.4rem 0;
+    .header .sub-tagline {
       font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-mid);
-      transition: color 0.15s;
+      color: #888;
+      margin-bottom: 1.2rem;
     }
 
-    .sidebar nav a:hover {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .sidebar-social {
-      margin-top: 1.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border);
+    .social-links {
       display: flex;
-      gap: 0.75rem;
-      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
-    .sidebar-social a {
-      color: var(--text-light);
-      transition: color 0.15s;
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.85rem;
+      color: #555;
+      transition: color 0.2s;
     }
-    .sidebar-social a:hover {
-      color: var(--accent);
+
+    .social-links a:hover {
+      color: #0077B5;
       text-decoration: none;
     }
 
-    .sidebar-social svg {
-      width: 20px;
-      height: 20px;
+    .social-links svg {
+      width: 18px;
+      height: 18px;
       fill: currentColor;
     }
 
-    .sidebar-credentials {
-      margin-top: 1rem;
-      font-size: 0.72rem;
-      color: var(--text-light);
-      line-height: 1.6;
+    /* ---- Navigation ---- */
+    .nav {
+      background: #fff;
+      border-bottom: 1px solid #e9ecef;
+      padding: 0.8rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    /* ---- Main content ---- */
-    .content {
-      margin-left: var(--sidebar-w);
-      max-width: 760px;
-      padding: 2.5rem 2.5rem 4rem;
+    .nav a {
+      display: inline-block;
+      margin: 0 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #555;
+      padding: 0.3rem 0;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .nav a:hover {
+      color: #0077B5;
+      border-bottom-color: #0077B5;
+      text-decoration: none;
+    }
+
+    /* ---- Main Content ---- */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
     }
 
     section {
-      margin-bottom: 2.5rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    section:last-child {
+      border-bottom: none;
     }
 
     section h2 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--accent);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 1.2rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      border-bottom: 2px solid var(--accent);
-      padding-bottom: 0.3rem;
-      margin-bottom: 1rem;
-    }
-
-    section h3 {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text);
-      margin: 1.4rem 0 0.6rem;
+      letter-spacing: 0.03em;
     }
 
     .bio {
       font-size: 0.95rem;
       line-height: 1.8;
-      color: var(--text-mid);
+      color: #444;
+    }
+
+    /* ---- Resume Section ---- */
+    .resume-section h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #333;
+      margin: 1.8rem 0 1rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .resume-section h3:first-child {
+      margin-top: 0;
+    }
+
+    .entry {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .entry-date {
+      flex-shrink: 0;
+      width: 140px;
+      font-size: 0.82rem;
+      color: #888;
+      padding-top: 0.15rem;
+    }
+
+    .entry-content {
+      flex: 1;
+    }
+
+    .entry-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #222;
+    }
+
+    .entry-org {
+      color: #0077B5;
+      font-weight: 400;
+    }
+
+    .entry-detail {
+      font-size: 0.88rem;
+      color: #555;
+      margin-top: 0.3rem;
+    }
+
+    .entry-detail ul {
+      margin-top: 0.3rem;
+      padding-left: 1.2rem;
+    }
+
+    .entry-detail li {
+      margin-bottom: 0.2rem;
+    }
+
+    /* ---- Affiliations ---- */
+    .affiliations {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .affiliation-badge {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      color: #555;
+      font-weight: 600;
     }
 
     /* ---- Publication list ---- */
@@ -155,8 +230,8 @@
 
     .pub-list li {
       position: relative;
-      padding: 0.5rem 0 0.5rem 1.8rem;
-      border-bottom: 1px solid #f0f0f0;
+      padding: 0.6rem 0 0.6rem 2rem;
+      border-bottom: 1px solid #f5f5f5;
       font-size: 0.88rem;
       line-height: 1.65;
     }
@@ -166,14 +241,14 @@
       content: counter(pub) ".";
       position: absolute;
       left: 0;
-      top: 0.55rem;
-      color: var(--accent-hover);
-      font-weight: 600;
+      top: 0.65rem;
+      color: #0077B5;
+      font-weight: 700;
       font-size: 0.82rem;
     }
 
-    .pub-list .venue { font-style: italic; color: var(--text-light); }
-    .pub-list .year { font-weight: 600; color: var(--accent); }
+    .pub-list .venue { font-style: italic; color: #888; }
+    .pub-list .year { font-weight: 700; color: #333; }
 
     /* ---- Simple list ---- */
     .simple-list {
@@ -182,189 +257,236 @@
     }
 
     .simple-list li {
-      padding: 0.3rem 0 0.3rem 1rem;
+      padding: 0.35rem 0 0.35rem 1.2rem;
       position: relative;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
     }
 
     .simple-list li::before {
       content: "\2022";
       position: absolute;
       left: 0;
-      color: var(--accent-hover);
+      color: #0077B5;
       font-weight: bold;
     }
 
     .if-note {
-      color: var(--text-light);
+      color: #999;
       font-size: 0.8rem;
     }
 
-    /* ---- Roles ---- */
-    .role {
-      margin-bottom: 1rem;
+    /* ---- Contact ---- */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
     }
 
-    .role-title {
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .contact-item svg {
+      width: 18px;
+      height: 18px;
+      fill: #0077B5;
+      flex-shrink: 0;
+    }
+
+    /* ---- CV Download ---- */
+    .cv-download {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.5rem;
+      background: #0077B5;
+      color: #fff;
+      border-radius: 4px;
+      font-size: 0.9rem;
       font-weight: 600;
-      font-size: 0.93rem;
+      transition: background 0.2s;
     }
 
-    .role-org { color: var(--accent-hover); }
-
-    .role-period {
-      font-size: 0.82rem;
-      color: var(--text-light);
-    }
-
-    .role-desc {
-      font-size: 0.88rem;
-      margin-top: 0.2rem;
-      color: var(--text-mid);
+    .cv-download:hover {
+      background: #005f8d;
+      text-decoration: none;
+      color: #fff;
     }
 
     /* ---- Footer ---- */
     footer {
-      margin-left: var(--sidebar-w);
-      padding: 1.5rem 2.5rem;
-      font-size: 0.75rem;
-      color: var(--text-light);
-      border-top: 1px solid var(--border);
-      max-width: 760px;
-    }
-
-    /* ---- Mobile hamburger ---- */
-    .menu-toggle {
-      display: none;
-      position: fixed;
-      top: 1rem;
-      left: 1rem;
-      z-index: 1001;
-      background: var(--sidebar-bg);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 0.5rem 0.65rem;
-      cursor: pointer;
-      line-height: 1;
-    }
-
-    .menu-toggle svg {
-      width: 20px;
-      height: 20px;
-      fill: var(--text-mid);
-    }
-
-    .overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.3);
-      z-index: 999;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.78rem;
+      color: #999;
+      border-top: 1px solid #eee;
     }
 
     /* ---- Responsive ---- */
-    @media (max-width: 768px) {
-      .sidebar {
-        transform: translateX(-100%);
-        transition: transform 0.25s ease;
-        z-index: 1000;
-        width: 260px;
-      }
-
-      .sidebar.open {
-        transform: translateX(0);
-      }
-
-      .overlay.open {
-        display: block;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      .content {
-        margin-left: 0;
-        padding: 3.5rem 1.25rem 3rem;
-      }
-
-      footer {
-        margin-left: 0;
-        padding: 1.5rem 1.25rem;
-      }
+    @media (max-width: 600px) {
+      .container { padding: 0 1.2rem; }
+      .nav a { margin: 0 0.5rem; font-size: 0.82rem; }
+      .entry { flex-direction: column; gap: 0.2rem; }
+      .entry-date { width: auto; }
+      .header h1 { font-size: 1.5rem; }
+      .profile-photo { width: 120px; height: 120px; }
     }
   </style>
 </head>
 <body>
 
-<!-- Mobile menu button -->
-<button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open'); document.querySelector('.overlay').classList.toggle('open');" aria-label="Menu">
-  <svg viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
-</button>
-<div class="overlay" onclick="document.querySelector('.sidebar').classList.remove('open'); this.classList.remove('open');"></div>
-
-<!-- Sidebar -->
-<aside class="sidebar">
-  <div class="sidebar-name">Vijay Govindarajan</div>
-  <div class="sidebar-tagline">Program Manager &amp; AI Researcher<br>Medical AI &middot; Healthcare Informatics &middot; Cloud Security</div>
-
-  <nav>
-    <a href="#about">About Me</a>
-    <a href="#publications">Publications</a>
-    <a href="#reviewing">Peer Review</a>
-    <a href="#editorial">Editorial Roles</a>
-    <a href="#committees">Program Committees</a>
-    <a href="#industry">Industry Experience</a>
-  </nav>
-
-  <div class="sidebar-credentials">
-    M.S., Computer Information Systems — Colorado State University<br>
-    B.Eng. — Anna University<br>
-    IEEE Senior Member<br>
-    Fellow, British Computer Society (FBCS)
-  </div>
-
-  <div class="sidebar-social">
-    <!-- LinkedIn -->
-    <a href="https://www.linkedin.com/in/vijaygovindarajan/" target="_blank" rel="noopener" aria-label="LinkedIn">
+<!-- Header -->
+<div class="header">
+  <img src="https://ui-avatars.com/api/?name=VG&size=150&background=0077B5&color=fff&font-size=0.45&bold=true" alt="Vijay Govindarajan" class="profile-photo">
+  <h1>Vijay Govindarajan</h1>
+  <div class="tagline">Program Manager | AI Researcher</div>
+  <div class="sub-tagline">IEEE Senior Member &middot; Fellow, British Computer Society (FBCS)</div>
+  <div class="social-links">
+    <a href="https://www.linkedin.com/in/vijaygovindarajan/" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+      LinkedIn
     </a>
-    <!-- Google Scholar -->
-    <a href="https://scholar.google.com/citations?user=2BU814UAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar">
+    <a href="https://scholar.google.com/citations?user=2BU814UAAAAJ&hl=en" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-2a5 5 0 1 0 0-10 5 5 0 0 0 0 10zM1.5 4.5 12 0l10.5 4.5L12 9z"/><path d="M2 7v10l4-3V7z"/></svg>
+      Google Scholar
     </a>
-    <!-- ORCID -->
-    <a href="https://orcid.org/0009-0004-1915-1519" target="_blank" rel="noopener" aria-label="ORCID">
+    <a href="https://orcid.org/0009-0004-1915-1519" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-1.847-1.238-3.722-3.806-3.722h-2.513z"/></svg>
+      ORCID
     </a>
-    <!-- Web of Science -->
-    <a href="https://www.webofscience.com/wos/author/record/LXQ-2608-2024" target="_blank" rel="noopener" aria-label="Web of Science">
+    <a href="https://www.webofscience.com/wos/author/record/LXQ-2608-2024" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3V3zm2 2v14h14V5H7zm2 3h10v2H7V8zm0 4h10v2H7v-2zm0 4h6v2H7v-2z"/></svg>
+      Web of Science
     </a>
-    <!-- Email -->
-    <a href="mailto:vijay.govindarajan91@gmail.com" aria-label="Email">
-      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-    </a>
-    <!-- Resume -->
-    <a href="Vijay_Govindarajan.pdf" target="_blank" aria-label="Download Resume">
-      <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11zm-3-5.5l-3 3-3-3 1.41-1.41L12 14.17l1.59-1.59L15 14.5z"/></svg>
+    <a href="https://github.com/vijaygovindaraja" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      GitHub
     </a>
   </div>
-</aside>
+</div>
+
+<!-- Navigation -->
+<nav class="nav">
+  <a href="#about-me">About Me</a>
+  <a href="#resume">Resume</a>
+  <a href="#publications">Publications</a>
+  <a href="#contact">Contact</a>
+</nav>
 
 <!-- Main Content -->
-<div class="content">
+<div class="container">
 
   <!-- About Me -->
-  <section id="about">
+  <section id="about-me">
     <h2>About Me</h2>
     <p class="bio">
-      I am a researcher and program manager working at the intersection of AI and healthcare. My research focuses on medical AI diagnostics, privacy-preserving healthcare systems, and federated learning for clinical applications, with additional interests in cloud security, explainable AI, and graph neural networks. I have 48 peer-reviewed publications (379 citations, h-index: 13) and serve as Associate Editor for IEEE Internet of Things Journal and npj Digital Medicine. In industry, I have led large-scale technical programs at Expedia Group and Microsoft, managing initiatives that delivered over $192M in combined revenue impact and cost savings. I hold an M.S. in Computer Information Systems from Colorado State University.
+      I am a researcher and program manager working at the intersection of AI and healthcare. My research focuses on medical AI diagnostics, privacy-preserving healthcare systems, and federated learning for clinical applications, with additional interests in cloud security, explainable AI, and graph neural networks. I have 48 peer-reviewed publications (379 citations, h-index: 13) and serve as Associate Editor for IEEE Internet of Things Journal and npj Digital Medicine.
     </p>
+    <p class="bio" style="margin-top: 0.8rem;">
+      In industry, I have led large-scale technical programs at Expedia Group and Microsoft, managing initiatives that delivered over $192M in combined revenue impact and cost savings.
+    </p>
+    <a href="Vijay_Govindarajan.pdf" class="cv-download" target="_blank">Download CV</a>
+  </section>
+
+  <!-- Resume -->
+  <section id="resume" class="resume-section">
+    <h2>Resume</h2>
+
+    <h3>Education</h3>
+    <div class="entry">
+      <div class="entry-date">2013 &ndash; 2015</div>
+      <div class="entry-content">
+        <div class="entry-title">M.S. in Computer Information Systems</div>
+        <div class="entry-detail"><span class="entry-org">Colorado State University</span>, Fort Collins, CO</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="entry-date">2009 &ndash; 2013</div>
+      <div class="entry-content">
+        <div class="entry-title">B.E. in Computer Science and Engineering</div>
+        <div class="entry-detail"><span class="entry-org">Anna University</span>, Chennai, India</div>
+      </div>
+    </div>
+
+    <h3>Experience</h3>
+    <div class="entry">
+      <div class="entry-date">Aug 2022 &ndash; Present</div>
+      <div class="entry-content">
+        <div class="entry-title">Program Manager III &mdash; <span class="entry-org">Expedia Group</span></div>
+        <div class="entry-detail">
+          <ul>
+            <li>Leading Deployment Modernization Program delivering $7M in-year and $11.6M annualized cost savings</li>
+            <li>Managed initiatives generating $100M+ in combined annual revenue and cost savings across pricing and fees platforms</li>
+            <li>Recipient of the Vrbie Award for "Best Initiative for Driving Traveler Value"</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="entry-date">Aug 2016 &ndash; Oct 2022</div>
+      <div class="entry-content">
+        <div class="entry-title">Program Manager &mdash; <span class="entry-org">Digisignals Inc (Consultant at Microsoft)</span></div>
+        <div class="entry-detail">
+          <ul>
+            <li>Led AI-powered advertisement infrastructure for Microsoft Online Store</li>
+            <li>Managed cross-functional teams across distributed systems and cloud infrastructure</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="entry-date">2015 &ndash; 2016</div>
+      <div class="entry-content">
+        <div class="entry-title">Associate &mdash; <span class="entry-org">PricewaterhouseCoopers (PwC)</span></div>
+        <div class="entry-detail">
+          <ul>
+            <li>Recipient of PwC Audit Innovation of the Year Award for the HALO platform</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h3>Affiliations &amp; Service</h3>
+    <div class="affiliations">
+      <span class="affiliation-badge">IEEE Senior Member</span>
+      <span class="affiliation-badge">FBCS</span>
+      <span class="affiliation-badge">Full Member, APM</span>
+    </div>
+    <div style="margin-top: 1rem;">
+      <p style="font-size: 0.9rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Associate Editor</p>
+      <ul class="simple-list">
+        <li>IEEE Internet of Things Journal <span class="if-note">(IF 8.9)</span></li>
+        <li>npj Digital Medicine <span class="if-note">(IF 15.1)</span></li>
+      </ul>
+    </div>
+    <div style="margin-top: 1rem;">
+      <p style="font-size: 0.9rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Program Committee Member</p>
+      <ul class="simple-list">
+        <li>ACM EuroSys</li>
+        <li>IEEE International Conference on Healthcare Informatics (ICHI)</li>
+        <li>IEEE Cluster Computing Conference</li>
+        <li>International Conference on Web Engineering</li>
+        <li>European Conference on Software Architecture</li>
+      </ul>
+    </div>
+    <div style="margin-top: 1rem;">
+      <p style="font-size: 0.9rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Peer Reviewer (120+ reviews)</p>
+      <ul class="simple-list">
+        <li>Reliability Engineering &amp; System Safety <span class="if-note">(IF 11.0)</span></li>
+        <li>IEEE Internet of Things Journal <span class="if-note">(IF 8.9)</span></li>
+        <li>Engineering Applications of AI <span class="if-note">(IF 8.0)</span></li>
+        <li>IEEE Trans. on Dependable and Secure Computing <span class="if-note">(IF 7.5)</span></li>
+        <li>IEEE Trans. on Services Computing <span class="if-note">(IF 5.8)</span></li>
+        <li>PLOS One &middot; IEEE Access &middot; Journal of Systems and Software</li>
+      </ul>
+    </div>
   </section>
 
   <!-- Publications -->
-  <section id="publications">
+  <section id="publications" class="resume-section">
     <h2>Publications</h2>
 
     <h3>Journal Articles</h3>
@@ -406,7 +528,7 @@
         <span class="venue">Future Internet,</span> <span class="year">2025</span>
       </li>
       <li>
-        Federated learning–driven privacy-preserving framework for decentralized data analysis and anomaly detection in contract review.
+        Federated learning-driven privacy-preserving framework for decentralized data analysis and anomaly detection in contract review.
         <span class="venue">International Journal of Advanced Computer Science and Applications,</span> <span class="year">2025</span>
       </li>
       <li>
@@ -414,7 +536,7 @@
         <span class="venue">IEEE Transactions on Consumer Electronics,</span> <span class="year">2025</span>
       </li>
       <li>
-        Enhancing cryptographic security in smart consumer electronics with a hybrid classical–post-quantum framework.
+        Enhancing cryptographic security in smart consumer electronics with a hybrid classical-post-quantum framework.
         <span class="venue">IEEE Transactions on Consumer Electronics,</span> <span class="year">2025</span>
       </li>
       <li>
@@ -422,7 +544,7 @@
         <span class="venue">Advances in Artificial Intelligence and Machine Learning,</span> <span class="year">2024</span>
       </li>
       <li>
-        A hybrid cloud-integrated autoencoder–GNN architecture for adaptive, high-dimensional anomaly detection in U.S. financial services compliance monitoring.
+        A hybrid cloud-integrated autoencoder-GNN architecture for adaptive, high-dimensional anomaly detection in U.S. financial services compliance monitoring.
         <span class="venue">Spectrum of Research,</span> <span class="year">2022</span>
       </li>
     </ol>
@@ -438,7 +560,7 @@
         <span class="venue">19th Conference of the European Chapter of the Association for Computational Linguistics (EACL), Industry Track,</span> <span class="year">2025</span>
       </li>
       <li>
-        Machine learning–based approach for handling imbalanced data for intrusion detection in the cloud environment.
+        Machine learning-based approach for handling imbalanced data for intrusion detection in the cloud environment.
         <span class="venue">IEEE International Conference on Disruptive Technologies,</span> <span class="year">2025</span>
       </li>
       <li>
@@ -446,80 +568,36 @@
         <span class="venue">International Conference on Networks &amp; Communications (Springer),</span> <span class="year">2013</span>
       </li>
       <li>
-        MACREE — A modern approach for classification and recognition of earthquakes and explosions.
+        MACREE - A modern approach for classification and recognition of earthquakes and explosions.
         <span class="venue">International Conference on Advances in Computing and Information Technology (Springer),</span> <span class="year">2013</span>
       </li>
     </ol>
   </section>
 
-  <!-- Peer Review -->
-  <section id="reviewing">
-    <h2>Peer Review</h2>
-    <p style="margin-bottom: 0.6rem; font-size: 0.9rem; color: var(--text-mid);">
-      Completed 120+ invited peer reviews for leading journals and conferences, including:
-    </p>
-    <ul class="simple-list">
-      <li>Reliability Engineering &amp; System Safety <span class="if-note">(IF 11.0, #1 in Quality &amp; Reliability)</span></li>
-      <li>IEEE Internet of Things Journal <span class="if-note">(IF 8.9, #1 in Computing Systems)</span></li>
-      <li>Engineering Applications of Artificial Intelligence <span class="if-note">(IF 8.0)</span></li>
-      <li>IEEE Transactions on Dependable and Secure Computing <span class="if-note">(IF 7.5)</span></li>
-      <li>IEEE Transactions on Services Computing <span class="if-note">(IF 5.8)</span></li>
-      <li>Journal of Systems and Software <span class="if-note">(IF 4.1)</span></li>
-      <li>IEEE Access</li>
-      <li>PLOS One</li>
-    </ul>
-  </section>
-
-  <!-- Editorial Roles -->
-  <section id="editorial">
-    <h2>Editorial Roles</h2>
-    <h3>Associate Editor</h3>
-    <ul class="simple-list">
-      <li>IEEE Internet of Things Journal <span class="if-note">(IF 8.9, #1 in Computing Systems)</span></li>
-      <li>npj Digital Medicine <span class="if-note">(IF 15.1, #2 in Medical Informatics)</span></li>
-    </ul>
-  </section>
-
-  <!-- Program Committees -->
-  <section id="committees">
-    <h2>Program Committees</h2>
-    <ul class="simple-list">
-      <li>ACM EuroSys</li>
-      <li>IEEE International Conference on Healthcare Informatics (ICHI)</li>
-      <li>IEEE Cluster Computing Conference</li>
-      <li>International Conference on Web Engineering</li>
-      <li>European Conference on Software Architecture</li>
-      <li>International Conference on Business Information Systems</li>
-      <li>International Conference on Edge Computing and Communications</li>
-      <li>International Conference on Communications, Circuits, and Systems</li>
-      <li>IEEE Annual Congress on Artificial Intelligence of Things</li>
-    </ul>
-  </section>
-
-  <!-- Industry Experience -->
-  <section id="industry">
-    <h2>Industry Experience</h2>
-
-    <div class="role">
-      <div class="role-title">Technical Program Manager III <span class="role-org">— Expedia Group</span></div>
-      <div class="role-period">Oct 2022 – Jan 2026 &middot; Seattle, WA</div>
-      <div class="role-desc">
-        Led mission-critical infrastructure and platform initiatives on the Pricing team, including currency conversion system unification, AWS Availability Zones expansion, and deployment modernization. Initiatives collectively delivered $192M+ in revenue impact and cost savings. Recipient of the Vrbie Award for Best Initiative for Driving Traveler Value.
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <a href="mailto:vijay.govindarajan91@gmail.com">vijay.govindarajan91@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Seattle, Washington
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        +1 (970) 682-9884
       </div>
     </div>
-
-    <div class="role">
-      <div class="role-title">Prior Roles</div>
-      <div class="role-desc">
-        Program management and IT roles across enterprise technology, with a consistent focus on distributed systems, cloud infrastructure, and data-driven platforms.
-      </div>
-    </div>
+    <a href="Vijay_Govindarajan.pdf" class="cv-download" target="_blank" style="margin-top: 1.5rem;">Download CV</a>
   </section>
 
 </div>
 
 <footer>
-  &copy; 2026 Vijay Govindarajan
+  &copy; 2026 Vijay Govindarajan. All rights reserved.
 </footer>
 
 </body>
