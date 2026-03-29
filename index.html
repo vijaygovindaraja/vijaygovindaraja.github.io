@@ -251,10 +251,10 @@
 </div>
 
 <div class="tabs">
-  <button class="tab-btn active" onclick="switchTab('about-me')">About Me</button>
-  <button class="tab-btn" onclick="switchTab('resume')">Resume</button>
-  <button class="tab-btn" onclick="switchTab('publications')">Publications</button>
-  <button class="tab-btn" onclick="switchTab('contact')">Contact</button>
+  <button class="tab-btn active" onclick="switchTab('about-me', this)">About Me</button>
+  <button class="tab-btn" onclick="switchTab('resume', this)">Resume</button>
+  <button class="tab-btn" onclick="switchTab('publications', this)">Publications</button>
+  <button class="tab-btn" onclick="switchTab('contact', this)">Contact</button>
 </div>
 
 <div class="tab-content">
@@ -451,13 +451,25 @@
 </footer>
 
 <script>
-function switchTab(tabId) {
+function switchTab(tabId, btn) {
   document.querySelectorAll('.tab-pane').forEach(function(p) { p.classList.remove('active'); });
   document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
   document.getElementById(tabId).classList.add('active');
-  event.currentTarget.classList.add('active');
+  btn.classList.add('active');
+  history.replaceState(null, '', '#' + tabId);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+// Activate tab from URL hash on page load
+(function() {
+  var hash = location.hash.replace('#', '');
+  var validTabs = ['about-me', 'resume', 'publications', 'contact'];
+  if (hash && validTabs.indexOf(hash) !== -1) {
+    var btns = document.querySelectorAll('.tab-btn');
+    var idx = validTabs.indexOf(hash);
+    switchTab(hash, btns[idx]);
+  }
+})();
 </script>
 
 </body>
