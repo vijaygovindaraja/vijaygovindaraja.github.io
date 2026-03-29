@@ -202,6 +202,39 @@
 
     .contact-item svg { display: none; }
 
+    /* Blog styles */
+    .blog-post { margin-bottom: 2.5rem; }
+    .blog-post-title { font-size: 1.1rem; font-weight: bold; margin-bottom: 0.3rem; }
+    .blog-post-meta { font-size: 0.78rem; color: #777; margin-bottom: 1rem; }
+    .blog-post h3 { font-size: 0.95rem; font-weight: bold; margin: 1.2rem 0 0.5rem; }
+    .blog-post p { font-size: 0.88rem; line-height: 1.7; margin-bottom: 0.7rem; }
+    .blog-post ul, .blog-post ol { font-size: 0.88rem; line-height: 1.7; padding-left: 1.5rem; margin-bottom: 0.7rem; }
+    .blog-post li { margin-bottom: 0.3rem; }
+    .blog-post code {
+      font-family: 'Courier New', Courier, monospace;
+      background: #f5f5f5;
+      padding: 0.15rem 0.4rem;
+      font-size: 0.82rem;
+      border: 1px solid #e0e0e0;
+    }
+    .blog-post pre {
+      background: #f5f5f5;
+      border: 1px solid #e0e0e0;
+      padding: 0.8rem 1rem;
+      overflow-x: auto;
+      margin-bottom: 0.8rem;
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+    .blog-post pre code { background: none; border: none; padding: 0; }
+    .blog-post .callout {
+      border-left: 3px solid #000;
+      padding: 0.6rem 1rem;
+      margin: 1rem 0;
+      background: #fafafa;
+      font-size: 0.86rem;
+    }
+
     footer {
       text-align: center;
       padding: 1.2rem;
@@ -254,6 +287,7 @@
   <button class="tab-btn active" onclick="switchTab('about-me')">About Me</button>
   <button class="tab-btn" onclick="switchTab('resume')">Resume</button>
   <button class="tab-btn" onclick="switchTab('publications')">Publications</button>
+  <button class="tab-btn" onclick="switchTab('blog')">Blog</button>
   <button class="tab-btn" onclick="switchTab('contact')">Contact</button>
 </div>
 
@@ -422,6 +456,129 @@
       <li>S Viginesh, <strong>G Vijayraghavan</strong>, S Srinath. "RAW: A Novel Reconfigurable Architecture Design Using Wireless for Future Generation Supercomputers." <span class="venue">Springer Lecture Notes in Electrical Engineering 131,</span> <span class="year">2013</span></li>
       <li>KV Krishnan, S Viginesh, <strong>G Vijayraghavan</strong>. "MACREE: A Modern Approach for Classification and Recognition of Earthquakes and Explosions." <span class="venue">ACITY 2013.</span> <span class="year">2013</span></li>
     </ol>
+  </div>
+
+  <!-- Blog -->
+  <div id="blog" class="tab-pane">
+    <h2>Blog</h2>
+    <div class="blog-post">
+      <div class="blog-post-title">Teaching Post-Silicon Validation Through Vibe Coding</div>
+      <div class="blog-post-meta">March 29, 2026</div>
+
+      <p>Post-silicon validation&mdash;the process of verifying that a manufactured chip behaves correctly in real hardware&mdash;has traditionally been one of the most experience-intensive disciplines in semiconductor engineering. It demands deep knowledge of microarchitecture, signal integrity, firmware bring-up, and debug toolchains. The learning curve is steep, and the field has long struggled with how to transfer this tacit knowledge to new engineers.</p>
+
+      <p>Enter <strong>vibe coding</strong>: the practice of using AI-assisted tools (large language models, code copilots, and natural-language-driven development) to write, explore, and iterate on code through intent rather than syntax. Vibe coding does not replace engineering rigor&mdash;it reshapes how we teach it.</p>
+
+      <h3>Why Post-Silicon Validation Needs a New Pedagogical Approach</h3>
+
+      <p>Post-silicon validation sits at the intersection of hardware and software. Engineers must:</p>
+      <ul>
+        <li>Write low-level firmware and test hooks in C, SystemVerilog, or Python to exercise silicon features</li>
+        <li>Interpret waveform captures, error logs, and performance counters under time pressure</li>
+        <li>Navigate undocumented or partially documented hardware behaviors</li>
+        <li>Correlate failures across multiple abstraction layers&mdash;from transistor-level defects to OS-visible hangs</li>
+      </ul>
+
+      <p>Traditional training relies on mentorship and years of hands-on triage. Documentation is sparse. Tribal knowledge dominates. This makes onboarding slow and scaling teams difficult.</p>
+
+      <h3>Vibe Coding as an Accelerated Learning Framework</h3>
+
+      <p>Vibe coding changes the feedback loop. Instead of staring at a blank editor wondering how to structure a register-polling script, a new engineer can describe intent:</p>
+
+      <div class="callout">&ldquo;Write a Python script that reads the MSR thermal status register on each core, logs throttling events with timestamps, and flags cores that exceed a 95&deg;C threshold for more than 500ms.&rdquo;</div>
+
+      <p>The AI generates a working scaffold. The engineer then learns by <em>reading, modifying, and debugging</em> that scaffold against real silicon&mdash;not by memorizing API documentation. This is a fundamentally different entry point into the discipline.</p>
+
+      <h3>Key Skills That Map to Vibe Coding Workflows</h3>
+
+      <h3>1. Register-Level Bring-Up and Debug</h3>
+
+      <p>Post-silicon engineers spend significant time reading and writing hardware registers to configure features and diagnose failures. Vibe coding enables rapid prototyping of register access utilities:</p>
+
+      <pre><code># Prompt: "Generate a script to scan all PCI configuration space
+# registers for a device and flag unexpected reset values"
+
+import struct
+
+def scan_pci_config(bus, dev, func, expected_map):
+    """Scan PCI config space and compare against expected values."""
+    results = []
+    for offset in range(0, 256, 4):
+        val = read_pci_config(bus, dev, func, offset)
+        if offset in expected_map and val != expected_map[offset]:
+            results.append({
+                'offset': hex(offset),
+                'expected': hex(expected_map[offset]),
+                'actual': hex(val),
+                'status': 'MISMATCH'
+            })
+    return results</code></pre>
+
+      <p>The engineer learns register layout, PCI enumeration, and failure classification by iterating on AI-generated code against real hardware responses. The AI handles boilerplate; the engineer focuses on <em>what the values mean</em>.</p>
+
+      <h3>2. Failure Signature Triage</h3>
+
+      <p>When silicon fails, the first task is classifying the failure. Vibe coding helps build triage tools interactively:</p>
+      <ul>
+        <li><strong>Log parsers</strong> &mdash; &ldquo;Parse this machine-check exception log and group errors by bank, type, and core&rdquo;</li>
+        <li><strong>Pattern matchers</strong> &mdash; &ldquo;Identify recurring bit-flip patterns in memory test results that suggest a row-hammer vulnerability&rdquo;</li>
+        <li><strong>Statistical analyzers</strong> &mdash; &ldquo;Compute the voltage-frequency correlation from this shmoo plot data and flag outlier parts&rdquo;</li>
+      </ul>
+
+      <p>Each prompt-and-iterate cycle teaches the engineer what questions to ask of failing silicon, which is the core post-silicon skill.</p>
+
+      <h3>3. Stimulus Generation and Coverage</h3>
+
+      <p>Writing directed tests that exercise specific microarchitectural corner cases is central to post-silicon validation. Vibe coding lowers the barrier:</p>
+
+      <div class="callout">&ldquo;Generate an x86 assembly stress test that triggers simultaneous L2 cache evictions and TLB invalidations across four cores, with memory-mapped I/O accesses interleaved to maximize interconnect contention.&rdquo;</div>
+
+      <p>The AI produces a starting point. The engineer refines it based on actual silicon behavior&mdash;learning cache coherence protocols, memory ordering, and interconnect arbitration in the process. This is experiential learning at a pace that was previously impossible without a dedicated mentor.</p>
+
+      <h3>4. Power and Thermal Characterization</h3>
+
+      <p>Post-silicon power validation requires instrumenting test sequences with telemetry collection. Vibe coding accelerates building these harnesses:</p>
+      <ul>
+        <li>Automated sweep scripts across voltage and frequency operating points</li>
+        <li>Real-time plotting of power rails during workload transitions</li>
+        <li>Anomaly detection for current spikes that indicate short-circuit or latch-up conditions</li>
+      </ul>
+
+      <h3>5. Firmware and BIOS Interaction</h3>
+
+      <p>Validating silicon features often requires modifying firmware flows&mdash;adjusting BIOS knobs, patching microcode, or writing UEFI shell scripts. Vibe coding helps engineers navigate these unfamiliar environments:</p>
+
+      <pre><code># Prompt: "Write a UEFI shell script that disables all C-states
+# deeper than C1, then runs a memory bandwidth test to isolate
+# whether deep idle states cause the observed DRAM errors"
+
+# The AI scaffolds the UEFI variable manipulation,
+# the engineer learns the firmware-silicon interface</code></pre>
+
+      <h3>A Practical Curriculum Structure</h3>
+
+      <p>Here is how an organization might structure a vibe-coding-based post-silicon validation curriculum:</p>
+
+      <ol>
+        <li><strong>Week 1&ndash;2: Silicon Fundamentals via Guided Prompts</strong> &mdash; Engineers use AI to generate register access scripts, learning chip architecture by exploring what each register controls</li>
+        <li><strong>Week 3&ndash;4: Failure Analysis Bootcamp</strong> &mdash; Given real (anonymized) failure logs, engineers use vibe coding to build triage tools, learning failure classification through tool construction</li>
+        <li><strong>Week 5&ndash;6: Test Development</strong> &mdash; Engineers write directed tests using AI assistance, then validate them on silicon or emulation platforms, learning coverage metrics and corner cases</li>
+        <li><strong>Week 7&ndash;8: Power and Performance</strong> &mdash; Build characterization harnesses with AI, run them on real parts, learn to interpret shmoo plots and margin analysis</li>
+        <li><strong>Week 9&ndash;10: Integration and Debug</strong> &mdash; Tackle end-to-end debug scenarios where engineers must combine all prior skills, using AI to accelerate but not replace the reasoning</li>
+      </ol>
+
+      <h3>The Critical Distinction: AI as Scaffold, Not Crutch</h3>
+
+      <p>Vibe coding in post-silicon validation works precisely because the domain has a hard physical ground truth: the silicon either passes or it does not. An AI can generate a test script, but if the script does not catch the bug that causes a system hang at 85&deg;C, the engineer must understand <em>why</em> and fix it. The silicon provides the feedback that no amount of AI-generated code can fake.</p>
+
+      <p>This makes post-silicon validation an ideal domain for vibe coding pedagogy. The AI accelerates the mechanical aspects of writing code while the physical hardware enforces genuine understanding.</p>
+
+      <h3>Looking Forward</h3>
+
+      <p>As chips grow more complex&mdash;chiplets, 3D stacking, heterogeneous compute&mdash;the validation surface area expands faster than teams can hire. Vibe coding will not replace the need for deep silicon expertise, but it can compress the timeline from novice to productive engineer from years to months. Organizations that integrate AI-assisted development into their post-silicon training pipelines will have a significant advantage in both velocity and talent retention.</p>
+
+      <p>The semiconductor industry has always been about pushing physical limits. It is time we push pedagogical limits too.</p>
+    </div>
   </div>
 
   <!-- Contact -->
