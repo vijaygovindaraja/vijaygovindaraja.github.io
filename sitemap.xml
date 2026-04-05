@@ -2,7 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://vijaygovindaraja.github.io/</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-04-05</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://vijaygovindaraja.github.io/#about-me</loc>
+    <lastmod>2026-04-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vijaygovindaraja.github.io/#resume</loc>
+    <lastmod>2026-04-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vijaygovindaraja.github.io/#publications</loc>
+    <lastmod>2026-04-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vijaygovindaraja.github.io/#contact</loc>
+    <lastmod>2026-04-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vijaygovindaraja.github.io/Vijay_Govindarajan.pdf</loc>
+    <lastmod>2026-04-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
