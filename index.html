@@ -315,17 +315,14 @@
     <div class="sub-section">
       <div class="sub-section-title">Open Source Contributions</div>
       <ul class="simple-list">
-        <li><strong>U.S. Department of Health and Human Services</strong> (Simpler Grants, the grants.gov redesign) &mdash; Fixed 404 pages that were incorrectly returning HTTP 200 status codes</li>
-        <li><strong>NVIDIA</strong> (NVFlare federated learning framework) &mdash; Fixed an optimizer bug in edge training that was degrading model convergence when momentum was configured</li>
-        <li><strong>NVIDIA</strong> (NVFlare federated learning framework) &mdash; Added model and data caching across federated learning rounds in the Hello Flower examples</li>
-        <li><strong>Grafana Labs</strong> (Grafana) &mdash; Added a colorblind-safe color palette for data visualizations</li>
-        <li><strong>Prometheus</strong> (CNCF-graduated monitoring system) &mdash; Added a delete-series page to the Prometheus user interface</li>
-        <li><strong>Expedia Group</strong> (Bull Java bean transformer library) &mdash; Fixed a field mapping bug for primitive fields mapped into nested objects</li>
-        <li><strong>Huly Platform</strong> (open-source collaboration platform) &mdash; Added spellcheck support to text editor components</li>
+        <li><strong>NVIDIA</strong> (NVFlare federated learning framework) &mdash; Fixed a silent correctness bug in the edge training simulator that was wiping optimizer momentum state between batches and degrading model convergence on every run that used momentum, Nesterov, or weight decay</li>
+        <li><strong>Grafana Labs</strong> (Grafana) &mdash; Added a colorblind-safe color palette for data visualizations, making dashboards readable for users with red-green color vision deficiency</li>
+        <li><strong>Prometheus</strong> (CNCF-graduated monitoring system) &mdash; Added a delete-series admin page to the Prometheus user interface, exposing series deletion that was previously only reachable through the admin API</li>
+        <li><strong>U.S. Department of Health and Human Services</strong> (Simpler Grants, the grants.gov next-generation site) &mdash; Fixed 404 pages that were returning HTTP 200, restoring correct status signals for search engine indexing and uptime monitoring</li>
+        <li><strong>Expedia Group</strong> (Bull Java bean transformer library) &mdash; Fixed a long-standing field mapping bug where primitive fields mapped into nested objects raised MissingFieldException, using ThreadLocal to preserve root source context across recursive transformations</li>
+        <li><strong>NVIDIA</strong> (NVFlare federated learning framework) &mdash; Added model and dataset caching across federated learning rounds in the Hello Flower examples, removing redundant per-round initialization</li>
+        <li><strong>Huly Platform</strong> (open-source collaboration platform) &mdash; Added spellcheck support to the text editor components used across the platform</li>
       </ul>
-      <p style="font-size: 0.82rem; color: #555; margin-top: 0.6rem; line-height: 1.5;">
-        Additional contributions currently under review at NASA (Open MCT), NIST (OSCAL), U.S. Census Bureau, Node.js, Microsoft, Apache Superset, Argo CD, and other projects.
-      </p>
     </div>
 
     <div class="sub-section">
