@@ -195,6 +195,28 @@
       border-top: 1px solid #ccc;
     }
 
+    .affiliations {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 0.8rem;
+    }
+
+    .affiliations img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+      filter: grayscale(100%);
+      opacity: 0.7;
+      transition: filter 0.2s, opacity 0.2s;
+    }
+
+    .affiliations img:hover {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+
     @media (max-width: 600px) {
       .tab-content { padding: 1.2rem 1rem 1.5rem; }
       .tab-btn { padding: 0.5rem 0.7rem; font-size: 0.8rem; }
@@ -254,6 +276,19 @@
     <p class="bio">
       I serve as Associate Editor for IEEE Internet of Things Journal and npj Digital Medicine (Nature Portfolio). My published work spans federated learning, medical imaging, IoT security, and cloud systems.
     </p>
+
+    <div class="section-label">Affiliations</div>
+    <div class="affiliations">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Expedia_Group_logo.svg" alt="Expedia Group">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/PricewaterhouseCoopers_Logo.svg" alt="PwC">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Colorado_State_University_logo.svg" alt="Colorado State University">
+      <img src="https://www.annauniv.edu/images/ANNAUNIVERSITYLOGO.png" alt="Anna University">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/IEEE_logo.svg" alt="IEEE">
+      <img src="https://upload.wikimedia.org/wikipedia/en/0/01/BCS_logo_2021.svg" alt="BCS">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Association_for_Computing_Machinery_%28ACM%29_logo.svg" alt="ACM">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Nature_journal_logo.svg" alt="Nature">
+    </div>
   </div>
 
   <!-- Resume -->
@@ -308,6 +343,7 @@
     <div class="section-label">Affiliations</div>
     <div class="badges">
       <span class="badge">IEEE Senior Member</span>
+      <span class="badge">ACM Member</span>
       <span class="badge">Fellow, British Computer Society</span>
       <span class="badge">Full Member, APM</span>
     </div>
