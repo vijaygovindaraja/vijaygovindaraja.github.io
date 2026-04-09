@@ -194,22 +194,52 @@
       display: inline-block;
       vertical-align: middle;
       transition: opacity 0.2s;
+      position: relative;
     }
 
     .code-link:hover {
       opacity: 1;
+    }
+
+    .code-link:hover .starship-icon {
       animation: launch 0.6s ease-out;
+    }
+
+    .code-link .smoke {
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,175,55,0.6), rgba(212,175,55,0) 70%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .code-link:hover .smoke {
+      animation: smoke-burst 0.8s ease-out;
     }
 
     .code-link .starship-icon {
       display: inline-block;
       vertical-align: middle;
+      position: relative;
+      z-index: 1;
     }
 
     @keyframes launch {
       0% { transform: translateY(0) scale(1); }
       30% { transform: translateY(2px) scale(1.1); }
       100% { transform: translateY(-12px) scale(1.2); opacity: 0.8; }
+    }
+
+    @keyframes smoke-burst {
+      0% { width: 0; height: 0; opacity: 0; bottom: -2px; }
+      30% { width: 20px; height: 12px; opacity: 0.8; bottom: -4px; }
+      60% { width: 30px; height: 18px; opacity: 0.5; bottom: -6px; }
+      100% { width: 40px; height: 24px; opacity: 0; bottom: -10px; }
     }
 
     .contact-list { margin-top: 0.4rem; }
@@ -391,15 +421,15 @@
     <div class="sub-section">
       <div class="sub-section-title">Open Source Contributions</div>
       <ul class="simple-list">
-        <li><strong>NVIDIA</strong> (NVFlare, a framework for training AI models across hospitals without sharing patient data) &mdash; Found and fixed a bug that was silently producing worse AI models during training. The error went unnoticed because the system ran without crashing, but the results were degraded on every run. <a href="https://github.com/NVIDIA/NVFlare/pull/4377" target="_blank" rel="noopener" class="code-link" title="View pull request"><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
-        <li><strong>Grafana Labs</strong> (Grafana, a widely used data monitoring dashboard with 65,000+ GitHub stars) &mdash; Added a color palette designed for colorblind users, so that charts and graphs are readable by people with color vision deficiency. <a href="https://github.com/grafana/grafana/pull/121385" target="_blank" rel="noopener" class="code-link" title="View pull request"><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
-        <li><strong>Prometheus</strong> (open-source monitoring system used across the industry, 57,000+ GitHub stars) &mdash; Built a page in the web interface that lets administrators delete outdated monitoring data, which previously required writing manual commands. <a href="https://github.com/prometheus/prometheus/pull/18390" target="_blank" rel="noopener" class="code-link" title="View pull request"><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
-        <li><strong>U.S. Department of Health and Human Services</strong> (Simpler Grants, the next-generation grants.gov website) &mdash; Fixed a bug where &ldquo;page not found&rdquo; errors were incorrectly reported as successful pages, which misled search engines and monitoring tools. <a href="https://github.com/HHS/simpler-grants-gov/pull/9301" target="_blank" rel="noopener" class="code-link" title="View pull request"><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
-        <li><strong>Expedia Group</strong> (Bull, an internal data transformation library) &mdash; Fixed a long-standing bug that caused the system to crash when converting data between different internal formats, affecting downstream services that relied on this library. <a href="https://github.com/ExpediaGroup/bull/pull/641" target="_blank" rel="noopener" class="code-link" title="View pull request"><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
-        <li><strong>NVIDIA</strong> (NVFlare) &mdash; Improved the efficiency of the federated learning examples by caching AI models and datasets between training rounds instead of reloading them each time. <a href="https://github.com/NVIDIA/NVFlare/pull/4372" target="_blank" rel="noopener" class="code-link" title="View pull request"><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
-        <li><strong>Microsoft</strong> (VS Code, the most widely used code editor) &mdash; Fixed how the editor resolves references between style files, so that developers no longer need to write long file paths when importing shared design code. <a href="https://github.com/microsoft/vscode-css-languageservice/pull/485" target="_blank" rel="noopener" class="code-link" title="View pull request"><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
-        <li><strong>Grafana Labs</strong> (Grafana) &mdash; Fixed a layout issue in the admin interface where data tables had inconsistent column sizing, making them harder to read. <a href="https://github.com/grafana/grafana/pull/121384" target="_blank" rel="noopener" class="code-link" title="View pull request"><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
-        <li><strong>Huly Platform</strong> (open-source project management tool) &mdash; Added spell-checking to the text editor used across the platform. <a href="https://github.com/hcengineering/platform/pull/10694" target="_blank" rel="noopener" class="code-link" title="View pull request"><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
+        <li><strong>NVIDIA</strong> (NVFlare, a framework for training AI models across hospitals without sharing patient data) &mdash; Found and fixed a bug that was silently producing worse AI models during training. The error went unnoticed because the system ran without crashing, but the results were degraded on every run. <a href="https://github.com/NVIDIA/NVFlare/pull/4377" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
+        <li><strong>Grafana Labs</strong> (Grafana, a widely used data monitoring dashboard with 65,000+ GitHub stars) &mdash; Added a color palette designed for colorblind users, so that charts and graphs are readable by people with color vision deficiency. <a href="https://github.com/grafana/grafana/pull/121385" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
+        <li><strong>Prometheus</strong> (open-source monitoring system used across the industry, 57,000+ GitHub stars) &mdash; Built a page in the web interface that lets administrators delete outdated monitoring data, which previously required writing manual commands. <a href="https://github.com/prometheus/prometheus/pull/18390" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
+        <li><strong>U.S. Department of Health and Human Services</strong> (Simpler Grants, the next-generation grants.gov website) &mdash; Fixed a bug where &ldquo;page not found&rdquo; errors were incorrectly reported as successful pages, which misled search engines and monitoring tools. <a href="https://github.com/HHS/simpler-grants-gov/pull/9301" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
+        <li><strong>Expedia Group</strong> (Bull, an internal data transformation library) &mdash; Fixed a long-standing bug that caused the system to crash when converting data between different internal formats, affecting downstream services that relied on this library. <a href="https://github.com/ExpediaGroup/bull/pull/641" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
+        <li><strong>NVIDIA</strong> (NVFlare) &mdash; Improved the efficiency of the federated learning examples by caching AI models and datasets between training rounds instead of reloading them each time. <a href="https://github.com/NVIDIA/NVFlare/pull/4372" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
+        <li><strong>Microsoft</strong> (VS Code, the most widely used code editor) &mdash; Fixed how the editor resolves references between style files, so that developers no longer need to write long file paths when importing shared design code. <a href="https://github.com/microsoft/vscode-css-languageservice/pull/485" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
+        <li><strong>Grafana Labs</strong> (Grafana) &mdash; Fixed a layout issue in the admin interface where data tables had inconsistent column sizing, making them harder to read. <a href="https://github.com/grafana/grafana/pull/121384" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
+        <li><strong>Huly Platform</strong> (open-source project management tool) &mdash; Added spell-checking to the text editor used across the platform. <a href="https://github.com/hcengineering/platform/pull/10694" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
       </ul>
     </div>
 
