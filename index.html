@@ -117,7 +117,7 @@
       padding-bottom: 0.3rem;
     }
 
-    .bio { font-size: 0.9rem; line-height: 1.7; margin-bottom: 0.6rem; }
+    .bio { font-size: 0.9rem; line-height: 1.7; margin-bottom: 0.6rem; text-align: justify; }
 
     .section-label {
       font-size: 0.9rem;
@@ -134,7 +134,7 @@
     .entry-content { flex: 1; }
     .entry-title { font-weight: bold; font-size: 0.9rem; }
     .entry-org { font-weight: normal; }
-    .entry-detail { font-size: 0.85rem; margin-top: 0.2rem; }
+    .entry-detail { font-size: 0.85rem; margin-top: 0.2rem; text-align: justify; }
     .entry-detail ul { margin-top: 0.2rem; padding-left: 1.2rem; }
     .entry-detail li { margin-bottom: 0.1rem; }
 
@@ -197,19 +197,18 @@
 
     .affiliations {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      justify-content: center;
       align-items: center;
       gap: 1.5rem;
-      margin-top: 0.8rem;
     }
 
     .affiliations img {
-      height: 28px;
+      height: 22px;
       width: auto;
-      max-width: 80px;
       object-fit: contain;
       filter: grayscale(100%);
-      opacity: 0.7;
+      opacity: 0.6;
       transition: filter 0.2s, opacity 0.2s;
     }
 
@@ -277,20 +276,6 @@
     <p class="bio">
       I serve as Associate Editor for IEEE Internet of Things Journal and npj Digital Medicine (Nature Portfolio). My published work spans federated learning, medical imaging, IoT security, and cloud systems.
     </p>
-
-    <div class="section-label">Affiliations</div>
-    <div class="affiliations">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Expedia_Group_logo.svg" alt="Expedia Group">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/PricewaterhouseCoopers_Logo.svg" alt="PwC">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Colorado_State_University_logo.svg" alt="Colorado State University">
-      <img src="https://images.seeklogo.com/logo-png/43/1/anna-university-logo-png_seeklogo-432131.png" alt="Anna University">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/IEEE_logo.svg" alt="IEEE">
-      <img src="https://upload.wikimedia.org/wikipedia/en/0/01/BCS_logo_2021.svg" alt="BCS">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Association_for_Computing_Machinery_%28ACM%29_logo.svg" alt="ACM">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Nature_journal_logo.svg" alt="Nature">
-      <img src="https://upload.wikimedia.org/wikipedia/en/8/84/Apm-logo-open-graph-1200x630.png" alt="APM">
-    </div>
   </div>
 
   <!-- Resume -->
@@ -481,7 +466,19 @@
 </div>
 
 <footer>
-  &copy; 2026 Vijay Govindarajan
+  <div class="affiliations">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Expedia_Group_logo.svg" alt="Expedia Group">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/PricewaterhouseCoopers_Logo.svg" alt="PwC">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Colorado_State_University_logo.svg" alt="Colorado State University">
+    <img src="https://images.seeklogo.com/logo-png/43/1/anna-university-logo-png_seeklogo-432131.png" alt="Anna University">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/IEEE_logo.svg" alt="IEEE">
+    <img src="https://upload.wikimedia.org/wikipedia/en/0/01/BCS_logo_2021.svg" alt="BCS">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Association_for_Computing_Machinery_%28ACM%29_logo.svg" alt="ACM">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Nature_journal_logo.svg" alt="Nature">
+    <img src="https://upload.wikimedia.org/wikipedia/en/8/84/Apm-logo-open-graph-1200x630.png" alt="APM">
+  </div>
+  <div style="margin-top: 0.8rem;">&copy; 2026 Vijay Govindarajan</div>
 </footer>
 
 <script>
