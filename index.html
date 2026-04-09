@@ -315,15 +315,15 @@
     <div class="sub-section">
       <div class="sub-section-title">Open Source Contributions</div>
       <ul class="simple-list">
-        <li><strong>NVIDIA</strong> (NVFlare federated learning framework) &mdash; Fixed a silent correctness bug in the edge training simulator that was wiping optimizer momentum state between batches and degrading model convergence on every run that used momentum, Nesterov, or weight decay</li>
-        <li><strong>Grafana Labs</strong> (Grafana) &mdash; Added a colorblind-safe color palette for data visualizations, making dashboards readable for users with red-green color vision deficiency</li>
-        <li><strong>Prometheus</strong> (CNCF-graduated monitoring system) &mdash; Added a delete-series admin page to the Prometheus user interface, exposing series deletion that was previously only reachable through the admin API</li>
-        <li><strong>U.S. Department of Health and Human Services</strong> (Simpler Grants, the grants.gov next-generation site) &mdash; Fixed 404 pages that were returning HTTP 200, restoring correct status signals for search engine indexing and uptime monitoring</li>
-        <li><strong>Expedia Group</strong> (Bull Java bean transformer library) &mdash; Fixed a long-standing field mapping bug where primitive fields mapped into nested objects raised MissingFieldException, using ThreadLocal to preserve root source context across recursive transformations</li>
-        <li><strong>NVIDIA</strong> (NVFlare federated learning framework) &mdash; Added model and dataset caching across federated learning rounds in the Hello Flower examples, removing redundant per-round initialization</li>
-        <li><strong>Microsoft</strong> (VS Code CSS Language Service) &mdash; Added resolution of bare module specifiers in CSS @import statements, enabling VS Code to resolve imports from node_modules without explicit relative paths</li>
-        <li><strong>Grafana Labs</strong> (Grafana) &mdash; Added support for specifying explicit column widths in the InteractiveTable component, fixing layout inconsistencies in admin and config panels</li>
-        <li><strong>Huly Platform</strong> (open-source collaboration platform) &mdash; Added spellcheck support to the text editor components used across the platform</li>
+        <li><strong>NVIDIA</strong> (NVFlare, a framework for training AI models across hospitals without sharing patient data) &mdash; Found and fixed a bug that was silently producing worse AI models during training. The error went unnoticed because the system ran without crashing, but the results were degraded on every run.</li>
+        <li><strong>Grafana Labs</strong> (Grafana, a widely used data monitoring dashboard with 65,000+ GitHub stars) &mdash; Added a color palette designed for colorblind users, so that charts and graphs are readable by people with color vision deficiency.</li>
+        <li><strong>Prometheus</strong> (open-source monitoring system used across the industry, 57,000+ GitHub stars) &mdash; Built a page in the web interface that lets administrators delete outdated monitoring data, which previously required writing manual commands.</li>
+        <li><strong>U.S. Department of Health and Human Services</strong> (Simpler Grants, the next-generation grants.gov website) &mdash; Fixed a bug where &ldquo;page not found&rdquo; errors were incorrectly reported as successful pages, which misled search engines and monitoring tools.</li>
+        <li><strong>Expedia Group</strong> (Bull, an internal data transformation library) &mdash; Fixed a long-standing bug that caused the system to crash when converting data between different internal formats, affecting downstream services that relied on this library.</li>
+        <li><strong>NVIDIA</strong> (NVFlare) &mdash; Improved the efficiency of the federated learning examples by caching AI models and datasets between training rounds instead of reloading them each time.</li>
+        <li><strong>Microsoft</strong> (VS Code, the most widely used code editor) &mdash; Fixed how the editor resolves references between style files, so that developers no longer need to write long file paths when importing shared design code.</li>
+        <li><strong>Grafana Labs</strong> (Grafana) &mdash; Fixed a layout issue in the admin interface where data tables had inconsistent column sizing, making them harder to read.</li>
+        <li><strong>Huly Platform</strong> (open-source project management tool) &mdash; Added spell-checking to the text editor used across the platform.</li>
       </ul>
     </div>
 
