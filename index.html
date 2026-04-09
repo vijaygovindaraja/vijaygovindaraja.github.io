@@ -321,6 +321,8 @@
         <li><strong>U.S. Department of Health and Human Services</strong> (Simpler Grants, the grants.gov next-generation site) &mdash; Fixed 404 pages that were returning HTTP 200, restoring correct status signals for search engine indexing and uptime monitoring</li>
         <li><strong>Expedia Group</strong> (Bull Java bean transformer library) &mdash; Fixed a long-standing field mapping bug where primitive fields mapped into nested objects raised MissingFieldException, using ThreadLocal to preserve root source context across recursive transformations</li>
         <li><strong>NVIDIA</strong> (NVFlare federated learning framework) &mdash; Added model and dataset caching across federated learning rounds in the Hello Flower examples, removing redundant per-round initialization</li>
+        <li><strong>Microsoft</strong> (VS Code CSS Language Service) &mdash; Added resolution of bare module specifiers in CSS @import statements, enabling VS Code to resolve imports from node_modules without explicit relative paths</li>
+        <li><strong>Grafana Labs</strong> (Grafana) &mdash; Added support for specifying explicit column widths in the InteractiveTable component, fixing layout inconsistencies in admin and config panels</li>
         <li><strong>Huly Platform</strong> (open-source collaboration platform) &mdash; Added spellcheck support to the text editor components used across the platform</li>
       </ul>
     </div>
@@ -449,9 +451,17 @@ function switchTab(tabId) {
   document.querySelectorAll('.tab-pane').forEach(function(p) { p.classList.remove('active'); });
   document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
   document.getElementById(tabId).classList.add('active');
-  event.currentTarget.classList.add('active');
+  document.querySelector('[onclick="switchTab(\'' + tabId + '\')"]').classList.add('active');
+  location.hash = tabId;
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+(function() {
+  var hash = location.hash.replace('#', '');
+  if (hash && document.getElementById(hash)) {
+    switchTab(hash);
+  }
+})();
 </script>
 
 </body>
