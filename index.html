@@ -187,6 +187,16 @@
 
     .paper-link:hover { opacity: 1; }
 
+    .code-link {
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: bold;
+      margin-left: 0.3rem;
+      opacity: 0.6;
+    }
+
+    .code-link:hover { opacity: 1; }
+
     .contact-list { margin-top: 0.4rem; }
 
     .contact-item {
@@ -366,15 +376,15 @@
     <div class="sub-section">
       <div class="sub-section-title">Open Source Contributions</div>
       <ul class="simple-list">
-        <li><strong>NVIDIA</strong> (NVFlare, a framework for training AI models across hospitals without sharing patient data) &mdash; Found and fixed a bug that was silently producing worse AI models during training. The error went unnoticed because the system ran without crashing, but the results were degraded on every run.</li>
-        <li><strong>Grafana Labs</strong> (Grafana, a widely used data monitoring dashboard with 65,000+ GitHub stars) &mdash; Added a color palette designed for colorblind users, so that charts and graphs are readable by people with color vision deficiency.</li>
-        <li><strong>Prometheus</strong> (open-source monitoring system used across the industry, 57,000+ GitHub stars) &mdash; Built a page in the web interface that lets administrators delete outdated monitoring data, which previously required writing manual commands.</li>
-        <li><strong>U.S. Department of Health and Human Services</strong> (Simpler Grants, the next-generation grants.gov website) &mdash; Fixed a bug where &ldquo;page not found&rdquo; errors were incorrectly reported as successful pages, which misled search engines and monitoring tools.</li>
-        <li><strong>Expedia Group</strong> (Bull, an internal data transformation library) &mdash; Fixed a long-standing bug that caused the system to crash when converting data between different internal formats, affecting downstream services that relied on this library.</li>
-        <li><strong>NVIDIA</strong> (NVFlare) &mdash; Improved the efficiency of the federated learning examples by caching AI models and datasets between training rounds instead of reloading them each time.</li>
-        <li><strong>Microsoft</strong> (VS Code, the most widely used code editor) &mdash; Fixed how the editor resolves references between style files, so that developers no longer need to write long file paths when importing shared design code.</li>
-        <li><strong>Grafana Labs</strong> (Grafana) &mdash; Fixed a layout issue in the admin interface where data tables had inconsistent column sizing, making them harder to read.</li>
-        <li><strong>Huly Platform</strong> (open-source project management tool) &mdash; Added spell-checking to the text editor used across the platform.</li>
+        <li><strong>NVIDIA</strong> (NVFlare, a framework for training AI models across hospitals without sharing patient data) &mdash; Found and fixed a bug that was silently producing worse AI models during training. The error went unnoticed because the system ran without crashing, but the results were degraded on every run. <a href="https://github.com/NVIDIA/NVFlare/pull/4377" target="_blank" rel="noopener" class="code-link" title="View pull request">&lt;/&gt;</a></li>
+        <li><strong>Grafana Labs</strong> (Grafana, a widely used data monitoring dashboard with 65,000+ GitHub stars) &mdash; Added a color palette designed for colorblind users, so that charts and graphs are readable by people with color vision deficiency. <a href="https://github.com/grafana/grafana/pull/121385" target="_blank" rel="noopener" class="code-link" title="View pull request">&lt;/&gt;</a></li>
+        <li><strong>Prometheus</strong> (open-source monitoring system used across the industry, 57,000+ GitHub stars) &mdash; Built a page in the web interface that lets administrators delete outdated monitoring data, which previously required writing manual commands. <a href="https://github.com/prometheus/prometheus/pull/18390" target="_blank" rel="noopener" class="code-link" title="View pull request">&lt;/&gt;</a></li>
+        <li><strong>U.S. Department of Health and Human Services</strong> (Simpler Grants, the next-generation grants.gov website) &mdash; Fixed a bug where &ldquo;page not found&rdquo; errors were incorrectly reported as successful pages, which misled search engines and monitoring tools. <a href="https://github.com/HHS/simpler-grants-gov/pull/9301" target="_blank" rel="noopener" class="code-link" title="View pull request">&lt;/&gt;</a></li>
+        <li><strong>Expedia Group</strong> (Bull, an internal data transformation library) &mdash; Fixed a long-standing bug that caused the system to crash when converting data between different internal formats, affecting downstream services that relied on this library. <a href="https://github.com/ExpediaGroup/bull/pull/641" target="_blank" rel="noopener" class="code-link" title="View pull request">&lt;/&gt;</a></li>
+        <li><strong>NVIDIA</strong> (NVFlare) &mdash; Improved the efficiency of the federated learning examples by caching AI models and datasets between training rounds instead of reloading them each time. <a href="https://github.com/NVIDIA/NVFlare/pull/4372" target="_blank" rel="noopener" class="code-link" title="View pull request">&lt;/&gt;</a></li>
+        <li><strong>Microsoft</strong> (VS Code, the most widely used code editor) &mdash; Fixed how the editor resolves references between style files, so that developers no longer need to write long file paths when importing shared design code. <a href="https://github.com/microsoft/vscode-css-languageservice/pull/485" target="_blank" rel="noopener" class="code-link" title="View pull request">&lt;/&gt;</a></li>
+        <li><strong>Grafana Labs</strong> (Grafana) &mdash; Fixed a layout issue in the admin interface where data tables had inconsistent column sizing, making them harder to read. <a href="https://github.com/grafana/grafana/pull/121384" target="_blank" rel="noopener" class="code-link" title="View pull request">&lt;/&gt;</a></li>
+        <li><strong>Huly Platform</strong> (open-source project management tool) &mdash; Added spell-checking to the text editor used across the platform. <a href="https://github.com/hcengineering/platform/pull/10694" target="_blank" rel="noopener" class="code-link" title="View pull request">&lt;/&gt;</a></li>
       </ul>
     </div>
 
