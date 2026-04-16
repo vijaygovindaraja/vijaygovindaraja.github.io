@@ -101,6 +101,7 @@
       color: #444;
       cursor: pointer;
       border-bottom: 2px solid transparent;
+      transition: color 0.25s ease, border-bottom-color 0.25s ease;
     }
 
     .tab-btn:hover { color: #000; }
@@ -110,11 +111,58 @@
       max-width: 700px;
       margin: 0 auto;
       padding: 1.5rem 1.5rem 2rem;
-      min-height: 400px;
+      position: relative;
     }
 
-    .tab-pane { display: none; }
-    .tab-pane.active { display: block; }
+    .tab-pane {
+      opacity: 0;
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      right: 1.5rem;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .tab-pane.active {
+      opacity: 1;
+      position: relative;
+      top: auto;
+      left: auto;
+      right: auto;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    /* Page-transition animations — slide + fade, inspired by Codrops pt-page */
+    .tab-pane.pt-slide-in-right {
+      animation: slideInRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+    .tab-pane.pt-slide-in-left {
+      animation: slideInLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+    .tab-pane.pt-slide-out-left {
+      animation: slideOutLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+    .tab-pane.pt-slide-out-right {
+      animation: slideOutRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+
+    @keyframes slideInRight {
+      from { transform: translateX(40px); opacity: 0; }
+      to   { transform: translateX(0);    opacity: 1; }
+    }
+    @keyframes slideInLeft {
+      from { transform: translateX(-40px); opacity: 0; }
+      to   { transform: translateX(0);     opacity: 1; }
+    }
+    @keyframes slideOutLeft {
+      from { transform: translateX(0);     opacity: 1; }
+      to   { transform: translateX(-40px); opacity: 0; }
+    }
+    @keyframes slideOutRight {
+      from { transform: translateX(0);    opacity: 1; }
+      to   { transform: translateX(40px); opacity: 0; }
+    }
 
     .tab-pane h2 {
       font-size: 1rem;
@@ -157,6 +205,25 @@
 
     .sub-section { margin-top: 0.8rem; }
     .sub-section-title { font-size: 0.85rem; font-weight: bold; margin-bottom: 0.3rem; }
+
+    .oss-group { margin-top: 1.8rem; }
+    .oss-group:first-child { margin-top: 0.8rem; }
+    .oss-org {
+      font-size: 1.05rem;
+      font-weight: bold;
+      margin-bottom: 0.3rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid #000;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .oss-project {
+      font-size: 0.82rem;
+      color: #555;
+      font-style: italic;
+      margin-bottom: 0.6rem;
+    }
+    .oss-group .simple-list { margin-top: 0.4rem; }
 
     .simple-list { list-style: disc; padding-left: 1.5rem; }
     .simple-list li { padding: 0.15rem 0; font-size: 0.85rem; }
@@ -480,18 +547,75 @@
 
     <div class="sub-section">
       <div class="sub-section-title">Open Source Contributions</div>
-      <ul class="simple-list">
-        <li><strong>NVIDIA</strong> (NVFlare, a framework for training AI models across hospitals without sharing patient data) &mdash; Found and fixed a bug that was silently producing worse AI models during training. The error went unnoticed because the system ran without crashing, but the results were degraded on every run. <a href="https://github.com/NVIDIA/NVFlare/pull/4377" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="launch-pad"></span><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
-        <li><strong>Grafana Labs</strong> (Grafana, a widely used data monitoring dashboard with 65,000+ GitHub stars) &mdash; Added a color palette designed for colorblind users, so that charts and graphs are readable by people with color vision deficiency. <a href="https://github.com/grafana/grafana/pull/121385" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="launch-pad"></span><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
-        <li><strong>Prometheus</strong> (open-source monitoring system used across the industry, 57,000+ GitHub stars) &mdash; Built a page in the web interface that lets administrators delete outdated monitoring data, which previously required writing manual commands. <a href="https://github.com/prometheus/prometheus/pull/18390" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="launch-pad"></span><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
-        <li><strong>U.S. Department of Health and Human Services</strong> (Simpler Grants, the next-generation grants.gov website) &mdash; Fixed a bug where &ldquo;page not found&rdquo; errors were incorrectly reported as successful pages, which misled search engines and monitoring tools. <a href="https://github.com/HHS/simpler-grants-gov/pull/9301" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="launch-pad"></span><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
-        <li><strong>Expedia Group</strong> (Bull, an internal data transformation library) &mdash; Fixed a long-standing bug that caused the system to crash when converting data between different internal formats, affecting downstream services that relied on this library. <a href="https://github.com/ExpediaGroup/bull/pull/641" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="launch-pad"></span><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
-        <li><strong>NVIDIA</strong> (NVFlare) &mdash; Improved the efficiency of the federated learning examples by caching AI models and datasets between training rounds instead of reloading them each time. <a href="https://github.com/NVIDIA/NVFlare/pull/4372" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="launch-pad"></span><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
-        <li><strong>Microsoft</strong> (VS Code, the most widely used code editor) &mdash; Fixed how the editor resolves references between style files, so that developers no longer need to write long file paths when importing shared design code. <a href="https://github.com/microsoft/vscode-css-languageservice/pull/485" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="launch-pad"></span><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
-        <li><strong>Grafana Labs</strong> (Grafana) &mdash; Fixed a layout issue in the admin interface where data tables had inconsistent column sizing, making them harder to read. <a href="https://github.com/grafana/grafana/pull/121384" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="launch-pad"></span><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
-        <li><strong>Huly Platform</strong> (open-source project management tool) &mdash; Added spell-checking to the text editor used across the platform. <a href="https://github.com/hcengineering/platform/pull/10694" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="launch-pad"></span><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
-        <li><strong>Italian Government</strong> (Design React Kit, Italy's official React component library for public administration websites) &mdash; Added versioned documentation deployment to GitHub Pages so each release gets its own URL and the latest version is always accessible. <a href="https://github.com/italia/design-react-kit/pull/1236" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="launch-pad"></span><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
-      </ul>
+
+      <div class="oss-group">
+        <div class="oss-org">NVIDIA</div>
+        <div class="oss-project">NVFlare &mdash; framework for training AI models across hospitals without sharing patient data</div>
+        <ul class="simple-list">
+          <li>Found and fixed a bug that was silently producing worse AI models during training. The error went unnoticed because the system ran without crashing, but the results were degraded on every run. <a href="https://github.com/NVIDIA/NVFlare/pull/4377" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="launch-pad"></span><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
+          <li>Improved the efficiency of the federated learning examples by caching AI models and datasets between training rounds instead of reloading them each time. <a href="https://github.com/NVIDIA/NVFlare/pull/4372" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="launch-pad"></span><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
+          <li>Fixed a bug where simulation mode always ran one training epoch regardless of configuration, causing simulated devices to behave differently from real devices when multiple epochs were configured. <a href="https://github.com/NVIDIA/NVFlare/pull/4404" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="launch-pad"></span><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
+          <li>Fixed a stack overflow crash in the Android SDK that occurred during federated training when the device had to retry fetching work from the server many times in a row. <a href="https://github.com/NVIDIA/NVFlare/pull/4416" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="launch-pad"></span><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
+        </ul>
+      </div>
+
+      <div class="oss-group">
+        <div class="oss-org">Grafana Labs</div>
+        <div class="oss-project">Grafana &mdash; widely used data monitoring dashboard (65,000+ GitHub stars)</div>
+        <ul class="simple-list">
+          <li>Added a color palette designed for colorblind users, so that charts and graphs are readable by people with color vision deficiency. <a href="https://github.com/grafana/grafana/pull/121385" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="launch-pad"></span><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
+          <li>Fixed a layout issue in the admin interface where data tables had inconsistent column sizing, making them harder to read. <a href="https://github.com/grafana/grafana/pull/121384" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="launch-pad"></span><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
+        </ul>
+      </div>
+
+      <div class="oss-group">
+        <div class="oss-org">Microsoft</div>
+        <div class="oss-project">VS Code &mdash; the most widely used code editor</div>
+        <ul class="simple-list">
+          <li>Fixed how the editor resolves references between style files, so that developers no longer need to write long file paths when importing shared design code. <a href="https://github.com/microsoft/vscode-css-languageservice/pull/485" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="launch-pad"></span><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
+        </ul>
+      </div>
+
+      <div class="oss-group">
+        <div class="oss-org">Prometheus</div>
+        <div class="oss-project">Open-source monitoring system (57,000+ GitHub stars)</div>
+        <ul class="simple-list">
+          <li>Built a page in the web interface that lets administrators delete outdated monitoring data, which previously required writing manual commands. <a href="https://github.com/prometheus/prometheus/pull/18390" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="launch-pad"></span><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
+        </ul>
+      </div>
+
+      <div class="oss-group">
+        <div class="oss-org">Expedia Group</div>
+        <div class="oss-project">Bull &mdash; internal data transformation library</div>
+        <ul class="simple-list">
+          <li>Fixed a long-standing bug that caused the system to crash when converting data between different internal formats, affecting downstream services that relied on this library. <a href="https://github.com/ExpediaGroup/bull/pull/641" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="launch-pad"></span><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
+        </ul>
+      </div>
+
+      <div class="oss-group">
+        <div class="oss-org">U.S. Department of Health and Human Services</div>
+        <div class="oss-project">Simpler Grants &mdash; next-generation grants.gov website</div>
+        <ul class="simple-list">
+          <li>Fixed a bug where &ldquo;page not found&rdquo; errors were incorrectly reported as successful pages, which misled search engines and monitoring tools. <a href="https://github.com/HHS/simpler-grants-gov/pull/9301" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="launch-pad"></span><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
+        </ul>
+      </div>
+
+      <div class="oss-group">
+        <div class="oss-org">Huly Platform</div>
+        <div class="oss-project">Open-source project management tool</div>
+        <ul class="simple-list">
+          <li>Added spell-checking to the text editor used across the platform. <a href="https://github.com/hcengineering/platform/pull/10694" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="launch-pad"></span><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
+        </ul>
+      </div>
+
+      <div class="oss-group">
+        <div class="oss-org">Italian Government</div>
+        <div class="oss-project">Design React Kit &mdash; Italy's official React component library for public administration websites</div>
+        <ul class="simple-list">
+          <li>Added versioned documentation deployment to GitHub Pages so each release gets its own URL and the latest version is always accessible. <a href="https://github.com/italia/design-react-kit/pull/1236" target="_blank" rel="noopener" class="code-link" title="View pull request"><span class="launch-pad"></span><span class="smoke"></span><svg class="starship-icon" viewBox="0 0 24 40" width="14" height="22"><path d="M12 0C12 0 6 8 6 20c0 4 1 7 2 9l-3 4h3l1 3h2l1-3h3l-3-4c1-2 2-5 2-9C18 8 12 0 12 0z" fill="#b0b0b0" stroke="#888" stroke-width="0.8"/><path d="M9 29l-2 3.5h2.5L9 29zm6 0l.5 3.5H18L15 29z" fill="#ff6633"/><path d="M10 12a2 3 0 0 1 4 0v5a2 3 0 0 1-4 0z" fill="#4a9eda" opacity="0.7"/></svg></a></li>
+        </ul>
+      </div>
+
     </div>
 
     <div class="sub-section">
@@ -591,7 +715,7 @@
       <li>R Sonani, <strong>V Govindarajan</strong>, P Verma. "Federated Learning-Driven Privacy-Preserving Framework for Decentralized Data Analysis and Anomaly Detection in Contract Review." <span class="venue">International Journal of Advanced Computer Science and Applications,</span> <span class="year">2025</span> <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=2BU814UAAAAJ&amp;citation_for_view=2BU814UAAAAJ:RGFaLdJalmkC" target="_blank" rel="noopener" class="paper-link" title="View paper">&#128196;</a></li>
       <li><strong>V Govindarajan</strong>. "Early Detection and Risk Stratification of Osteosarcoma, A Rare Tumor, Using Artificial Intelligence: A Systematic Review." <span class="venue">Advances in Artificial Intelligence and Machine Learning,</span> <span class="year">2024</span> <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=2BU814UAAAAJ&amp;citation_for_view=2BU814UAAAAJ:KlAtU1dfN6UC" target="_blank" rel="noopener" class="paper-link" title="View paper">&#128196;</a></li>
       <li>R Sonani, <strong>V Govindarajan</strong>. "A Hybrid Cloud-Integrated Autoencoder-GNN Architecture for Adaptive, High-Dimensional Anomaly Detection in US Financial Services Compliance Monitoring." <span class="venue">Spectrum of Research,</span> <span class="year">2022</span> <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=2BU814UAAAAJ&amp;citation_for_view=2BU814UAAAAJ:LkGwnXOMwfcC" target="_blank" rel="noopener" class="paper-link" title="View paper">&#128196;</a></li>
-      <li><strong>V Govindarajan</strong>, R Sonani, P Patel. "Secure Performance Optimization in Multi-Tenant Cloud Environments." <span class="venue">Annals of Applied Sciences,</span> <span class="year">2020</span> <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=2BU814UAAAAJ&amp;citation_for_view=2BU814UAAAAJ:8k81kl-MbHgC" target="_blank" rel="noopener" class="paper-link" title="View paper">&#128196;</a></li>
+      <li><strong>V Govindarajan</strong>, R Sonani, P Patel. "Secure Performance Optimization in Multi-Tenant Cloud Environments." <span class="venue">Annals of Applied Sciences,</span> <span class="year">2020</span> <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=2BU814UAAAAJ&amp;citation_for_view=2BU814UAAAAJ:8k81kl-MbHgC" target="_blank" rel="noopener" class="paper-link" title="View paper">&#128196;</a> <a href="https://github.com/vijaygovindaraja/secperf-multitenant" target="_blank" rel="noopener" class="github-link" title="Source code"><svg viewBox="0 0 16 16" width="14" height="14"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" fill="currentColor"/></svg></a></li>
       <li>S Viginesh, <strong>G Vijayraghavan</strong>, S Srinath. "RAW: A Novel Reconfigurable Architecture Design Using Wireless for Future Generation Supercomputers." <span class="venue">Springer Lecture Notes in Electrical Engineering 131,</span> <span class="year">2013</span> <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=2BU814UAAAAJ&amp;citation_for_view=2BU814UAAAAJ:u5HHmVD_uO8C" target="_blank" rel="noopener" class="paper-link" title="View paper">&#128196;</a></li>
       <li>KV Krishnan, S Viginesh, <strong>G Vijayraghavan</strong>. "MACREE: A Modern Approach for Classification and Recognition of Earthquakes and Explosions." <span class="venue">ACITY 2013.</span> <span class="year">2013</span> <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=2BU814UAAAAJ&amp;citation_for_view=2BU814UAAAAJ:u-x6o8ySG0sC" target="_blank" rel="noopener" class="paper-link" title="View paper">&#128196;</a></li>
     </ol>
@@ -623,13 +747,46 @@
 </footer>
 
 <script>
+// Ordered list of tab IDs, used to infer direction of travel.
+var TAB_ORDER = ['about-me', 'resume', 'publications', 'contact'];
+
 function switchTab(tabId) {
-  document.querySelectorAll('.tab-pane').forEach(function(p) { p.classList.remove('active'); });
+  var current = document.querySelector('.tab-pane.active');
+  var target = document.getElementById(tabId);
+  if (current === target) return;
+
+  // Figure out direction: moving right through the tab bar or left.
+  var goingRight = true;
+  if (current) {
+    var fromIdx = TAB_ORDER.indexOf(current.id);
+    var toIdx = TAB_ORDER.indexOf(tabId);
+    goingRight = toIdx > fromIdx;
+  }
+
+  // Clear any residual animation classes on every pane.
+  var animClasses = ['pt-slide-in-right', 'pt-slide-in-left',
+                     'pt-slide-out-left', 'pt-slide-out-right'];
+  document.querySelectorAll('.tab-pane').forEach(function(p) {
+    animClasses.forEach(function(c) { p.classList.remove(c); });
+  });
+
+  // Animate current out, new one in.
+  if (current) {
+    current.classList.add(goingRight ? 'pt-slide-out-left' : 'pt-slide-out-right');
+  }
+
+  // Activate button immediately for tactile feedback.
   document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
-  document.getElementById(tabId).classList.add('active');
   document.querySelector('[onclick="switchTab(\'' + tabId + '\')"]').classList.add('active');
   location.hash = tabId;
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Swap the active pane partway through the outgoing animation.
+  setTimeout(function() {
+    if (current) current.classList.remove('active');
+    target.classList.add('active');
+    target.classList.add(goingRight ? 'pt-slide-in-right' : 'pt-slide-in-left');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, 250);
 }
 
 (function() {
