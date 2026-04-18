@@ -418,10 +418,9 @@
       z-index: 9999;
       background: #fff;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.5s ease;
+      transition: opacity 0.6s ease;
     }
 
     .intro-overlay.fade-out {
@@ -429,37 +428,86 @@
       pointer-events: none;
     }
 
-    .intro-name {
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 2rem;
-      font-weight: bold;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 2px solid #000;
-      width: 0;
-      animation: type-name 1.2s steps(18) 0.4s forwards, blink-caret 0.6s step-end infinite;
+    .intro-dots {
+      position: relative;
+      width: 120px;
+      height: 120px;
     }
 
-    .intro-tagline {
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 0.9rem;
-      color: #444;
-      opacity: 0;
-      margin-top: 0.5rem;
-      transition: opacity 0.6s ease;
+    .intro-dot {
+      position: absolute;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
     }
 
-    .intro-tagline.visible { opacity: 1; }
-
-    .intro-cursor-hidden { border-right-color: transparent !important; animation: none !important; }
-
-    @keyframes type-name {
-      from { width: 0; }
-      to { width: 18ch; }
+    /* Outer ring — red, pulses outward */
+    .intro-dot:nth-child(1) {
+      width: 80px;
+      height: 80px;
+      margin: -40px 0 0 -40px;
+      background: #c0392b;
+      animation: pulse-out 1.4s ease-in-out infinite;
     }
 
-    @keyframes blink-caret {
-      50% { border-right-color: transparent; }
+    /* Middle ring — black, pulses opposite phase */
+    .intro-dot:nth-child(2) {
+      width: 50px;
+      height: 50px;
+      margin: -25px 0 0 -25px;
+      background: #000;
+      animation: pulse-out 1.4s ease-in-out 0.35s infinite;
+    }
+
+    /* Inner dot — red, pulses with slight delay */
+    .intro-dot:nth-child(3) {
+      width: 24px;
+      height: 24px;
+      margin: -12px 0 0 -12px;
+      background: #e74c3c;
+      animation: pulse-out 1.4s ease-in-out 0.7s infinite;
+    }
+
+    /* Orbiting dots */
+    .intro-orbit {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      margin: -4px 0 0 -4px;
+    }
+
+    .intro-orbit:nth-child(4) {
+      background: #000;
+      animation: orbit 2s linear infinite;
+    }
+
+    .intro-orbit:nth-child(5) {
+      background: #c0392b;
+      animation: orbit 2s linear 0.5s infinite;
+    }
+
+    .intro-orbit:nth-child(6) {
+      background: #000;
+      animation: orbit 2s linear 1s infinite;
+    }
+
+    .intro-orbit:nth-child(7) {
+      background: #e74c3c;
+      animation: orbit 2s linear 1.5s infinite;
+    }
+
+    @keyframes pulse-out {
+      0%, 100% { transform: scale(0.85); opacity: 0.6; }
+      50% { transform: scale(1.15); opacity: 1; }
+    }
+
+    @keyframes orbit {
+      from { transform: rotate(0deg) translateX(55px) rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) translateX(55px) rotate(-180deg) scale(1.4); }
+      to { transform: rotate(360deg) translateX(55px) rotate(-360deg) scale(1); }
     }
 
     /* Hide page content until intro is done */
@@ -488,15 +536,21 @@
       .entry { flex-direction: column; gap: 0.1rem; }
       .entry-date { width: auto; }
       .header h1 { font-size: 1.3rem; }
-      .intro-name { font-size: 1.5rem; }
     }
   </style>
 </head>
 <body class="intro-active">
 
 <div class="intro-overlay" id="intro">
-  <div class="intro-name" id="intro-name">Vijay Govindarajan</div>
-  <div class="intro-tagline" id="intro-tagline">Program Management Leader | Researcher</div>
+  <div class="intro-dots">
+    <div class="intro-dot"></div>
+    <div class="intro-dot"></div>
+    <div class="intro-dot"></div>
+    <div class="intro-orbit"></div>
+    <div class="intro-orbit"></div>
+    <div class="intro-orbit"></div>
+    <div class="intro-orbit"></div>
+  </div>
 </div>
 
 <div class="header">
@@ -827,35 +881,25 @@
 <script>
 // --- Intro animation ---
 (function() {
-  // Only play on first visit per session
   if (sessionStorage.getItem('intro-seen')) {
     document.body.classList.remove('intro-active');
     document.getElementById('intro').style.display = 'none';
     return;
   }
 
-  var nameEl = document.getElementById('intro-name');
-  var taglineEl = document.getElementById('intro-tagline');
   var overlay = document.getElementById('intro');
 
-  // After name finishes typing (1.2s + 0.4s delay = 1.6s), show tagline
+  // Let the dots hypnotize for ~2.5s, then fade out
   setTimeout(function() {
-    taglineEl.classList.add('visible');
-  }, 1700);
-
-  // After a pause, hide caret and fade out overlay
-  setTimeout(function() {
-    nameEl.classList.add('intro-cursor-hidden');
     overlay.classList.add('fade-out');
     document.body.classList.remove('intro-active');
     document.body.classList.add('intro-done');
     sessionStorage.setItem('intro-seen', '1');
-  }, 2800);
+  }, 2500);
 
-  // Remove overlay from DOM after transition
   setTimeout(function() {
     overlay.remove();
-  }, 3400);
+  }, 3200);
 })();
 </script>
 
